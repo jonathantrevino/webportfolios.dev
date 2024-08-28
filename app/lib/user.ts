@@ -75,3 +75,5 @@ export const updateUsersTitle = async (title: string, uid: string) => {
     title: title,
   });
 };
+
+export const uploadPortfolio = async (url: string, user_id: string) => {};
