@@ -80,19 +80,19 @@ const page = () => {
             </div>
             <div
               role="button"
-              className="text-red-500 underline text-sm font-light w-fit"
+              className="text-red-500 underline text-sm font-light w-fit hover:text-red-800 transition-all ease-in-out"
               onClick={() => signOut(auth)}
             >
               Log Out
             </div>
           </div>
 
-          <div role="tablist" className="tabs tabs-boxed">
+          <div role="tablist" className="tabs tabs-boxed gap-2">
             {tab.map((current, index) => (
               <a
                 key={index}
                 role="tab"
-                className={`${current.active ? "tab-active" : ""} tab`}
+                className={`${current.active ? "tab-active" : "hover:bg-primary/20"} transition-all ease-in-out tab`}
                 onClick={() => changeTab(index)}
               >
                 {current.title}
