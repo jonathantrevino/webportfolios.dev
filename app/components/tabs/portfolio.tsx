@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import UploadCta from "../uploadcta";
+import { uploadPortfolio } from "@/app/lib/user";
 
-const Portfolio = () => {
+interface Props {
+  user_id: string;
+}
+const Portfolio = ({ user_id }: Props) => {
   const [portfolio, setPortfolio] = useState(null);
   const [portfolioTemp, setPortfolioTemp] = useState(null);
+
   return (
     <div className="space-y-[23px]">
-      <UploadCta />
+      <UploadCta area={"profile-portfolio"} />
       <div className="space-y-3">
         <div className="flex-[1] flex flex-col space-y-[3px]">
           <label className="text-sm">Portfolio URL</label>
@@ -27,6 +32,7 @@ const Portfolio = () => {
                   : true
                 : true
             }
+            onClick={() => uploadPortfolio(portfolioTemp!, user_id)}
           >
             Upload Portfolio
           </button>
