@@ -101,7 +101,7 @@ const Profile = () => {
             )}
           </div>
           <div className="space-y-[6px]">
-            <p className="font-medium">Profile Picture</p>
+            <p className="text-sm font-medium">Profile Picture</p>
             <input
               ref={fileRef}
               type="file"
@@ -135,41 +135,7 @@ const Profile = () => {
           )}
         </div>
       </div>
-      <form className="space-y-6">
-        <div className="flex justify-between">
-          <p className="font-medium">Profile Details</p>
-          {!editing && (
-            <button
-              className="btn btn-primary btn-sm"
-              type="button"
-              onClick={() => setEditing(true)}
-            >
-              Edit Details
-            </button>
-          )}
-          {editing && (
-            <div className="flex gap-3">
-              <button
-                className="btn btn-primary btn-sm"
-                type="button"
-                onClick={handleUpdateTitle}
-                disabled={updateLoading}
-              >
-                {updateLoading ? "Saving Changes" : "Save Changes"}
-              </button>
-              <button
-                className="btn btn-outline !border-[color:#DBDBDB] !bg-[color:#FAFAFA] !text-[color:#363636] !font-normal btn-sm"
-                type="button"
-                onClick={() => {
-                  setEditing(false);
-                  refreshFields();
-                }}
-              >
-                Cancel
-              </button>{" "}
-            </div>
-          )}
-        </div>
+      <form className="space-y-3 p-6">
         <div className="flex flex-col space-y-[3px]">
           <label className="text-sm">Email Address</label>
           <input
@@ -202,6 +168,39 @@ const Profile = () => {
             <option>Front End Developer</option>
             <option>Back End Developer</option>
           </select>{" "}
+        </div>
+        <div className="flex justify-end">
+          {!editing && (
+            <button
+              className="btn btn-primary btn-sm"
+              type="button"
+              onClick={() => setEditing(true)}
+            >
+              Edit Details
+            </button>
+          )}
+          {editing && (
+            <div className="flex gap-3">
+              <button
+                className="btn btn-primary btn-sm"
+                type="button"
+                onClick={handleUpdateTitle}
+                disabled={updateLoading}
+              >
+                {updateLoading ? "Saving Changes" : "Save Changes"}
+              </button>
+              <button
+                className="btn btn-outline !border-[color:#DBDBDB] !bg-[color:#FAFAFA] !text-[color:#363636] !font-normal btn-sm"
+                type="button"
+                onClick={() => {
+                  setEditing(false);
+                  refreshFields();
+                }}
+              >
+                Cancel
+              </button>{" "}
+            </div>
+          )}
         </div>
       </form>
     </div>
