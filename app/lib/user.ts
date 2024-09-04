@@ -1,6 +1,11 @@
 import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import { firestore, storage } from "./firebase";
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import {
+  getDownloadURL,
+  ref,
+  uploadBytes,
+  uploadBytesResumable,
+} from "firebase/storage";
 
 export const getUserInfo = async (uid: string) => {
   const userRef = doc(firestore, "users", uid);
@@ -76,4 +81,74 @@ export const updateUsersTitle = async (title: string, uid: string) => {
   });
 };
 
-export const uploadPortfolio = async (url: string, user_id: string) => {};
+export const uploadPortfolio = async (url: string, user_id: string) => {
+  try {
+    const response = await fetch(
+      "https://vqa37eeoahmezfx6loxgsliijy0wppbf.lambda-url.us-east-1.on.aws/record",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ url: url }), // Pass the URL to record
+      },
+    );
+
+    // check if AWS Rekognition detected potential desired moderation
+    if (response.status === 400) {
+      return { status: false, statusText: "Moderation Detected" };
+    }
+
+    // check if screenshots were successful
+    else if (response.status === 200) {
+      const data = await response.json();
+
+      let screenshots = data.screenshotData;
+      let screenshotPhotoLocations = [];
+
+      console.log("screenshots: ", screenshots);
+      for (const screenshot of screenshots) {
+        console.log("screenshot: ", screenshot);
+
+        // Convert Uint8Array to a Blob
+        const blob = new Blob([Uint8Array.from(screenshot.data)], {
+          type: "image/png",
+        });
+
+        console.log(blob);
+        if (blob) {
+          // Upload the Blob to Firestore Storage
+          const storageRef = ref(
+            storage,
+            "/users/" + user_id + "/" + Date.now() + ".png",
+          );
+
+          // Store URL of uploaded file
+          screenshotPhotoLocations.push(
+            await uploadBytesResumable(storageRef, blob).then(() => {
+              return getDownloadURL(storageRef);
+            }),
+          );
+        }
+      }
+      const portfolioDocRef = doc(firestore, "portfolios", user_id);
+
+      let views = 0;
+      let likes = 0;
+
+      await setDoc(
+        portfolioDocRef,
+        {
+          user_id: user_id,
+          portfolioURL: url,
+          photoURL: screenshotPhotoLocations,
+          views: views,
+          likes: likes,
+        },
+        { merge: true },
+      );
+      return { status: true, statusText: "Upload Successful" };
+    } else {
+    }
+  } catch (error) {}
+};
