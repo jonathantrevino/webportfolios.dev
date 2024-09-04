@@ -10,6 +10,10 @@ const Portfolio = ({ user_id }: Props) => {
   const [portfolio, setPortfolio] = useState(null);
   const [portfolioTemp, setPortfolioTemp] = useState(null);
 
+  async function handleUploadPortfolio() {
+    const response = await uploadPortfolio(portfolioTemp!, user_id);
+  }
+
   return (
     <div className="space-y-[23px]">
       <UploadCta area={"profile-portfolio"} />
@@ -33,13 +37,13 @@ const Portfolio = ({ user_id }: Props) => {
                   : true
                 : true
             }
-            onClick={() => uploadPortfolio(portfolioTemp!, user_id)}
+            onClick={() => handleUploadPortfolio()}
           >
             Upload Portfolio
           </button>
         </div>
       </div>
-      <div></div>
+      <div>Post Status</div>
       <div className="w-full p-6 border border-[color:#DBDBDB] rounded-md">
         <span className="flex justify-between items-center">
           <p className="text-sm font-medium">Post Impressions</p>
