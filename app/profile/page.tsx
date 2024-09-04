@@ -58,7 +58,7 @@ const page = () => {
       case "Profile":
         return <Profile />;
       case "Portfolio":
-        return <Portfolio />;
+        return <Portfolio user_id={user!.uid} />;
     }
   };
 
