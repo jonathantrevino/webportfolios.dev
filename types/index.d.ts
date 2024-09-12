@@ -8,3 +8,11 @@ export interface UserType {
   email: string;
   displayName: string;
 }
+
+export interface PortfolioType {
+  likes: number;
+  photoURL: string[];
+  portfolioURL: string;
+  views: number;
+  user_id: string;
+}
