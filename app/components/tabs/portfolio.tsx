@@ -54,6 +54,17 @@ const Portfolio = ({ user_id }: Props) => {
               Active
             </div>
           </div>
+          <div>
+            <div className="w-full h-full aspect-video border border-[color:#DBDBDB] relative">
+              <Image
+                src={portfolio?.photoURL[0]}
+                fill
+                alt="portfolio preview"
+              />
+            </div>
+            <Link href={portfolio?.portfolioURL}>View Post</Link>
+          </div>
+
           <div className="w-full p-6 border border-[color:#DBDBDB] rounded-md">
             <span className="flex justify-between items-center">
               <p className="text-sm font-medium">Post Impressions</p>
@@ -66,16 +77,6 @@ const Portfolio = ({ user_id }: Props) => {
                 </a>
               </div>
             </span>
-          </div>
-          <div>
-            <div className="w-full h-full aspect-video border border-[color:#DBDBDB] relative">
-              <Image
-                src={portfolio?.photoURL[0]}
-                fill
-                alt="portfolio preview"
-              />
-            </div>
-            <Link href={portfolio?.portfolioURL}>View Post</Link>
           </div>
         </div>
       )}
