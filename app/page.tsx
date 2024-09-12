@@ -15,8 +15,8 @@ export default function Home() {
               <span className="font-semibold"> Remarkable Portfolios</span>
             </h1>
             <p className="text-sm text-center max-w-[476px]">
-              Launch your portfolio effortlessly with Linkfolio’s JSX components
-              using TailwindCSS, or find inspiration from real-world portfolios.
+              Launch your portfolio effortlessly with JSX components using
+              TailwindCSS, or find inspiration from real-world portfolios.
             </p>
           </div>
           <span className="flex gap-[16px] mx-auto w-fit">
