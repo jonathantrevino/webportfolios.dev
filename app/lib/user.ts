@@ -81,6 +81,27 @@ export const updateUsersTitle = async (title: string, uid: string) => {
   });
 };
 
+export const usersPortfolio = async (user_id: string) => {
+  if (!user_id) return null;
+
+  const portfolioRef = doc(firestore, "portfolios", user_id);
+
+  const portfolioSnapshot = await getDoc(portfolioRef);
+
+  if (!portfolioSnapshot.exists()) return null;
+
+  const portfolio = portfolioSnapshot.data();
+  console.log(portfolio);
+
+  return {
+    likes: portfolio.likes,
+    photoURL: portfolio.photoURL,
+    portfolioURL: portfolio.portfolioURL,
+    user_id: portfolio.user_id,
+    views: portfolio.views,
+  };
+};
+
 export const uploadPortfolio = async (url: string, user_id: string) => {
   try {
     const response = await fetch(
