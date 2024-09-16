@@ -12,13 +12,7 @@ const Nav = () => {
     <nav className="p-[25px] flex justify-between items-center bg-[color:#FAFAFA] border boder-[color:#DBDBDB]">
       <div className="flex gap-[30px] items-center h-[40px]">
         <Link href="/" className="flex gap-[10px]">
-          <Image
-            src={"/logo.png"}
-            width={30}
-            height={30}
-            alt="linkfolio logo"
-          />
-          <div className="font-medium text-lg">Linkfolio</div>
+          <div className="font-medium text-lg">webportfolios.dev</div>
         </Link>
         <ul className="hidden gap-[20px] text-[color:#363636] sm:flex">
           <li className="hover:text-[color:#000000]">
