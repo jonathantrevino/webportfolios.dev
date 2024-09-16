@@ -1,18 +1,16 @@
 import React, { useEffect, useState } from "react";
 import UploadCta from "../uploadcta";
 import { uploadPortfolio, usersPortfolio } from "@/app/lib/user";
-import { EllipsisVertical } from "lucide-react";
+import { Eye, Heart, LinkIcon } from "lucide-react";
 import { PortfolioType } from "@/types";
-import PortfolioStatus from "../portfolioStatus";
 import Image from "next/image";
-import Link from "next/link";
 
 interface Props {
   user_id: string;
 }
 const Portfolio = ({ user_id }: Props) => {
-  const [portfolio, setPortfolio] = useState<PortfolioType | null>(null);
   const [portfolioTemp, setPortfolioTemp] = useState(null);
+  const [portfolio, setPortfolio] = useState<PortfolioType | null>(null);
   const [isCheckingPortfolio, setIsCheckingPortfolio] = useState<boolean>(true);
 
   useEffect(() => {
@@ -48,13 +46,7 @@ const Portfolio = ({ user_id }: Props) => {
 
       {!isCheckingPortfolio && portfolio && (
         <div className="space-y-[23px]">
-          <div className="flex justify-between items-center text-sm">
-            Portfolio Status
-            <div className="badge badge-success badge-outline !rounded-md">
-              Active
-            </div>
-          </div>
-          <div>
+          <div className="relative">
             <div className="w-full h-full aspect-video border border-[color:#DBDBDB] relative">
               <Image
                 src={portfolio?.photoURL[0]}
@@ -62,9 +54,48 @@ const Portfolio = ({ user_id }: Props) => {
                 alt="portfolio preview"
               />
             </div>
-            <Link href={portfolio?.portfolioURL}>View Post</Link>
-          </div>
 
+            <div
+              className="tooltip absolute top-4 left-4"
+              data-tip="Portfolio Status"
+            >
+              <div className="badge badge-success badge-outline !rounded-md">
+                Active
+              </div>
+            </div>
+
+            <div className="absolute bottom-4 right-4 flex gap-2">
+              <div className="tooltip" data-tip="View Post">
+                <a
+                  role="button"
+                  href={`/portfolios/${portfolio.user_id}`}
+                  className="btn btn-sm"
+                >
+                  <Eye />
+                </a>
+              </div>
+              <div className="tooltip" data-tip="Like Portfolio">
+                <a
+                  role="button"
+                  target="_blank"
+                  href={portfolio?.portfolioURL}
+                  className="btn btn-sm"
+                >
+                  <Heart />
+                </a>
+              </div>
+              <div className="tooltip" data-tip="View Portfolio">
+                <a
+                  role="button"
+                  target="_blank"
+                  href={portfolio?.portfolioURL}
+                  className="btn btn-sm"
+                >
+                  <LinkIcon />
+                </a>
+              </div>
+            </div>
+          </div>
           <div className="w-full p-6 border border-[color:#DBDBDB] rounded-md">
             <span className="flex justify-between items-center">
               <p className="text-sm font-medium">Post Impressions</p>
