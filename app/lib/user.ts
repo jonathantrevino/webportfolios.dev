@@ -91,15 +91,27 @@ export const viewPortfolio = async (portfolio_id: string) => {
   if (!portfolioSnapshot.exists()) return null;
 
   const portfolio = portfolioSnapshot.data();
-  console.log(portfolio);
 
+  const userRef = doc(firestore, "users", portfolio.user_id);
+
+  const userSnapshot = await getDoc(userRef);
+  if (!userSnapshot.exists()) return null;
+
+  const user = userSnapshot.data();
   return {
     likes: portfolio.likes,
     photoURL: portfolio.photoURL,
     portfolioURL: portfolio.portfolioURL,
     user_id: portfolio.user_id,
     views: portfolio.views,
+    displayName: user.displayName,
+    user_photoURL: user.photoURL,
+    title: user.title,
   };
+};
+
+export const usersProfile = async (user_id: string) => {
+  if (!user_id) return null;
 };
 
 export const usersPortfolio = async (user_id: string) => {
@@ -112,7 +124,6 @@ export const usersPortfolio = async (user_id: string) => {
   if (!portfolioSnapshot.exists()) return null;
 
   const portfolio = portfolioSnapshot.data();
-  console.log(portfolio);
 
   return {
     likes: portfolio.likes,
