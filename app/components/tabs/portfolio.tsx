@@ -47,8 +47,9 @@ const Portfolio = ({ user_id }: Props) => {
       {!isCheckingPortfolio && portfolio && (
         <div className="space-y-[23px]">
           <div className="relative">
-            <div className="w-full h-full aspect-video border border-[color:#DBDBDB] relative">
+            <div className="w-full h-full aspect-video border border-[color:#DBDBDB] relative rounded-md">
               <Image
+                className="rounded-md"
                 src={portfolio?.photoURL[0]}
                 fill
                 alt="portfolio preview"
