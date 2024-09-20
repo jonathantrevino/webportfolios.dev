@@ -7,6 +7,7 @@ export interface UserType {
   emailVisible: boolean;
   email: string;
   displayName: string;
+  update_id?: string;
 }
 
 export interface PortfolioType {
