@@ -18,12 +18,12 @@ const Nav = () => {
           <li className="hover:text-[color:#000000]">
             <Link href="/portfolios">Portfolios</Link>
           </li>
-          <li className="hover:text-[color:#000000]">
-            <Link href="/components">Components</Link>
-          </li>
-          <li className="hover:text-[color:#000000]">
-            <Link href="/newsletter">Newsletter</Link>
-          </li>
+          {/* <li className="hover:text-[color:#000000]"> */}
+          {/*   <Link href="/components">Components</Link> */}
+          {/* </li> */}
+          {/* <li className="hover:text-[color:#000000]"> */}
+          {/*   <Link href="/newsletter">Newsletter</Link> */}
+          {/* </li> */}
         </ul>
       </div>
       <div className="flex gap-[20px] items-center">
@@ -67,12 +67,12 @@ const Nav = () => {
             <li className="hover:text-[color:#000000]">
               <Link href="/portfolios">Portfolios</Link>
             </li>
-            <li className="hover:text-[color:#000000]">
-              <Link href="/components">Components</Link>
-            </li>
-            <li className="hover:text-[color:#000000]">
-              <Link href="/newsletter">Newsletter</Link>
-            </li>
+            {/* <li className="hover:text-[color:#000000]"> */}
+            {/*   <Link href="/components">Components</Link> */}
+            {/* </li> */}
+            {/* <li className="hover:text-[color:#000000]"> */}
+            {/*   <Link href="/newsletter">Newsletter</Link> */}
+            {/* </li> */}
           </ul>
         </div>
       </div>
