@@ -84,35 +84,28 @@ const page = ({ params }: { params: { user: string } }) => {
               <div className="flex justify-between items-center">
                 {postUser && <Profile postUser={postUser} />}
                 <div className="flex justify-end gap-2">
-                  <div className="tooltip" data-tip="View Post">
-                    <a
-                      role="button"
-                      href={`/portfolios/${portfolio.user_id}`}
-                      className="btn btn-sm"
-                    >
-                      <Eye />
-                    </a>
-                  </div>
-                  <div className="tooltip" data-tip="Like Portfolio">
-                    <a
-                      role="button"
-                      target="_blank"
-                      href={portfolio?.portfolioURL}
-                      className="btn btn-sm"
-                    >
-                      <Heart />
-                    </a>
-                  </div>
-                  <div className="tooltip" data-tip="View Portfolio">
-                    <a
-                      role="button"
-                      target="_blank"
-                      href={portfolio?.portfolioURL}
-                      className="btn btn-sm"
-                    >
-                      <LinkIcon />
-                    </a>
-                  </div>
+                  {/* <div className="tooltip" data-tip="Like Portfolio"> */}
+                  {/* <a */}
+                  {/*   role="button" */}
+                  {/*   target="_blank" */}
+                  {/*   href={portfolio?.portfolioURL} */}
+                  {/*   className="btn btn-md" */}
+                  {/* > */}
+                  {/*   <Heart /> */}
+                  {/*   Like Portfolio */}
+                  {/* </a> */}
+                  {/* </div> */}
+                  {/* <div className="tooltip" data-tip="View Portfolio"> */}
+                  <a
+                    role="button"
+                    target="_blank"
+                    href={portfolio?.portfolioURL}
+                    className="btn btn-md"
+                  >
+                    <LinkIcon />
+                    View Portfolio
+                  </a>
+                  {/* </div> */}
                 </div>
               </div>
               <div className="relative">
