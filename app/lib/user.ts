@@ -1,4 +1,13 @@
-import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  query,
+  setDoc,
+  updateDoc,
+  where,
+} from "firebase/firestore";
 import { firestore, storage } from "./firebase";
 import {
   getDownloadURL,
@@ -134,8 +143,37 @@ export const usersPortfolio = async (user_id: string) => {
   };
 };
 
-export const uploadPortfolio = async (url: string, user_id: string) => {
+export const checkUserUpdate = async (user_id: string) => {
+  const updatesRef = collection(firestore, "updates");
+
+  const q = query(updatesRef, where("user_id", "==", user_id));
+
+  const querySnapshot = await getDocs(q);
+
+  if (querySnapshot.empty) {
+    return null;
+  }
+  return querySnapshot.docs[0].data();
+};
+
+export const uploadPortfolio = async (
+  url: string,
+  user_id: string,
+  firebase_id: string,
+) => {
   try {
+    // insert (or update if already exists) request into updates db
+
+    console.log("in here");
+    const updateDoc = doc(firestore, "updates", user_id);
+
+    await setDoc(updateDoc, {
+      status: "Pending",
+      statusCode: 0,
+      statusMessage: "Calling API",
+      user_id: user_id,
+    });
+
     const response = await fetch(
       "https://vqa37eeoahmezfx6loxgsliijy0wppbf.lambda-url.us-east-1.on.aws/record",
       {
@@ -143,7 +181,11 @@ export const uploadPortfolio = async (url: string, user_id: string) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ url: url }), // Pass the URL to record
+        body: JSON.stringify({
+          url: url,
+          user_id: user_id,
+          firebase_id: firebase_id,
+        }),
       },
     );
 
