@@ -275,14 +275,14 @@ export const paginatePortfolios = async (lastVisible: any) => {
     q = query(
       collection(firestore, "portfolios"),
       orderBy("uniqueViews"),
-      limit(6),
+      limit(25),
     );
   } else {
     q = query(
       collection(firestore, "portfolios"),
       orderBy("uniqueViews"),
       startAfter(lastVisible),
-      limit(6),
+      limit(25),
     );
   }
 
@@ -294,15 +294,12 @@ export const paginatePortfolios = async (lastVisible: any) => {
 
   for (const portfolio of portfolioSnapshot.docs) {
     // Convert snapshot to iterable using .docs
-    console.log(portfolio.id);
 
     // Fetch user data from Firestore
     const userRef = doc(firestore, "users", portfolio.id);
     const userSnapshot = await getDoc(userRef);
 
     if (userSnapshot.exists()) {
-      console.log("User exists for portfolio:", portfolio.id);
-
       // Add the portfolio and user data to the portfolios array
       portfolios.push({
         ...portfolio.data(), // Use portfolio.data() to get the actual data
@@ -315,6 +312,5 @@ export const paginatePortfolios = async (lastVisible: any) => {
     }
   }
 
-  console.log(portfolios);
   return portfolios;
 };
