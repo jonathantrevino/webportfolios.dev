@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { useAuth } from "react-firebase-hooks";
 import { auth } from "../lib/firebase";
 import { useRouter } from "next/navigation";
 import {
