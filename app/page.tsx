@@ -54,9 +54,9 @@ export default function Home() {
             >
               Discover Portfolios
             </Link>
-            <button className="btn btn-outline !border-[color:#DBDBDB] !bg-[color:#FAFAFA] !text-[color:#363636] !font-normal">
-              View Component Library
-            </button>
+            {/* <button className="btn btn-outline !border-[color:#DBDBDB] !bg-[color:#FAFAFA] !text-[color:#363636] !font-normal"> */}
+            {/*   View Component Library */}
+            {/* </button> */}
           </span>
         </section>
       </main>
