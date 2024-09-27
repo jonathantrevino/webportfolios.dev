@@ -15,7 +15,7 @@ interface Props {
 }
 const Portfolio = ({ user_id }: Props) => {
   const [user, loading] = useAuthState(auth);
-  const [portfolioTemp, setPortfolioTemp] = useState(null);
+  const [portfolioTemp, setPortfolioTemp] = useState<string | null>(null);
   const [portfolio, setPortfolio] = useState<PortfolioType | null>(null);
   const [isCheckingPortfolio, setIsCheckingPortfolio] = useState<boolean>(true);
   const [update, setUpdate] = useState<{
@@ -116,7 +116,7 @@ const Portfolio = ({ user_id }: Props) => {
             className="btn btn-primary btn-sm"
             disabled={
               portfolioTemp
-                ? portfolioTemp && portfolioTemp.includes(".")
+                ? portfolioTemp.includes(".")
                   ? false
                   : true
                 : true
