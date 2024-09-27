@@ -3,8 +3,12 @@ import {
   doc,
   getDoc,
   getDocs,
+  increment,
+  limit,
+  orderBy,
   query,
   setDoc,
+  startAfter,
   updateDoc,
   where,
 } from "firebase/firestore";
@@ -90,6 +94,23 @@ export const updateUsersTitle = async (title: string, uid: string) => {
   });
 };
 
+export const updateVisits = async (
+  portfolio_id: string,
+  type: "unique" | "views",
+) => {
+  const portfolioRef = doc(firestore, "portfolios", portfolio_id);
+  if (type === "unique") {
+    await updateDoc(portfolioRef, {
+      uniqueViews: increment(1),
+      totalViews: increment(1),
+    });
+  } else if (type === "views") {
+    await updateDoc(portfolioRef, {
+      totalViews: increment(1),
+    });
+  }
+};
+
 export const viewPortfolio = async (portfolio_id: string) => {
   if (!portfolio_id) return null;
 
@@ -112,7 +133,6 @@ export const viewPortfolio = async (portfolio_id: string) => {
     photoURL: portfolio.photoURL,
     portfolioURL: portfolio.portfolioURL,
     user_id: portfolio.user_id,
-    views: portfolio.views,
     displayName: user.displayName,
     user_photoURL: user.photoURL,
     title: user.title,
@@ -139,7 +159,8 @@ export const usersPortfolio = async (user_id: string) => {
     photoURL: portfolio.photoURL,
     portfolioURL: portfolio.portfolioURL,
     user_id: portfolio.user_id,
-    views: portfolio.views,
+    totalViews: portfolio.totalViews,
+    uniqueViews: portfolio.uniqueViews,
   };
 };
 
@@ -246,4 +267,54 @@ export const uploadPortfolio = async (
     } else {
     }
   } catch (error) {}
+};
+
+export const paginatePortfolios = async (lastVisible: any) => {
+  let q;
+  if (!lastVisible) {
+    q = query(
+      collection(firestore, "portfolios"),
+      orderBy("uniqueViews"),
+      limit(6),
+    );
+  } else {
+    q = query(
+      collection(firestore, "portfolios"),
+      orderBy("uniqueViews"),
+      startAfter(lastVisible),
+      limit(6),
+    );
+  }
+
+  const portfolioSnapshot = await getDocs(q);
+
+  if (portfolioSnapshot.empty) return null;
+
+  let portfolios: any[] = [];
+
+  for (const portfolio of portfolioSnapshot.docs) {
+    // Convert snapshot to iterable using .docs
+    console.log(portfolio.id);
+
+    // Fetch user data from Firestore
+    const userRef = doc(firestore, "users", portfolio.id);
+    const userSnapshot = await getDoc(userRef);
+
+    if (userSnapshot.exists()) {
+      console.log("User exists for portfolio:", portfolio.id);
+
+      // Add the portfolio and user data to the portfolios array
+      portfolios.push({
+        ...portfolio.data(), // Use portfolio.data() to get the actual data
+        user_photoURL: userSnapshot.data()?.photoURL,
+        user_displayName: userSnapshot.data()?.displayName,
+        user_title: userSnapshot.data()?.title,
+      });
+    } else {
+      console.log(`No user found for portfolio: ${portfolio.id}`);
+    }
+  }
+
+  console.log(portfolios);
+  return portfolios;
 };
