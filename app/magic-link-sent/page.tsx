@@ -2,11 +2,20 @@
 import { BadgeCheck } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 const page = () => {
   const message = [" lets", "get", "started"];
+  const [emailForSignIn, setEmailForSignIn] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Only run this on the client-side
+    if (typeof window !== "undefined") {
+      const email = window.localStorage.getItem("emailForSignIn");
+      setEmailForSignIn(email);
+    }
+  }, []);
   return (
     <>
       <Link
@@ -61,7 +70,7 @@ const page = () => {
                 <p className="text-sm">
                   A magic link has been sent to{" "}
                   <span className="font-medium underline">
-                    {window.localStorage.getItem("emailForSignIn")}
+                    {emailForSignIn && emailForSignIn}
                     {". "}
                   </span>
                   Please check your spam folder as well.
