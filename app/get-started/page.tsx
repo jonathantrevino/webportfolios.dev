@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 import Nav from "../components/nav";
 import { ScanFace } from "lucide-react";
 import { sendMagicLink } from "@/app/lib/auth";
@@ -7,10 +8,12 @@ import { sendMagicLink } from "@/app/lib/auth";
 const page = () => {
   const [email, setEmail] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
+  const router = useRouter();
   function handleMagicLink() {
     setLoading(true);
     sendMagicLink(email);
     setLoading(false);
+    router.push("/magic-link-sent");
   }
   return (
     <>
