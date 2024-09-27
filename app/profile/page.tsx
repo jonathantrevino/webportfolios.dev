@@ -25,10 +25,10 @@ const page = () => {
       active: false,
     },
 
-    {
-      title: "Preferences",
-      active: false,
-    },
+    // {
+    //   title: "Preferences",
+    //   active: false,
+    // },
   ]);
 
   const router = useRouter();
@@ -36,7 +36,7 @@ const page = () => {
     if (!user && !loading) {
       router.push("/");
     }
-  }, [loading]);
+  }, [user, loading]);
 
   function changeTab(index: number) {
     setTab((prevTabs) =>
