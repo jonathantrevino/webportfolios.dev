@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import UploadCta from "../uploadcta";
 import {
   checkUserUpdate,
   uploadPortfolio,
@@ -95,7 +94,8 @@ const Portfolio = ({ user_id }: Props) => {
       photoURL: response.photoURL,
       portfolioURL: response.portfolioURL,
       user_id: response.user_id,
-      views: response.views,
+      totalViews: response.totalViews,
+      uniqueViews: response.uniqueViews,
     });
   }
 
@@ -133,24 +133,36 @@ const Portfolio = ({ user_id }: Props) => {
       </div>
 
       <div className="flex flex-col lg:flex-row-reverse justify-between gap-5">
-        <div className="flex-[0.3] border border-[color:#DBDBDB] h-fit rounded-md p-4 space-y-3">
-          <div className="flex justify-between items-center">
-            <h2 className="text-sm">Portfolio Status</h2>
-            <div
-              className={`badge badge-sm badge-outline ${!update ? "badge-neutral" : update?.statusCode === 0 ? "badge-warning" : update?.statusCode === 200 ? "badge-success" : "badge-error"}`}
-            >
-              {!update ? "Loading" : update.status}
+        <div className="flex-[0.3] flex flex-col gap-5">
+          <div className="border border-[color:#DBDBDB] h-fit rounded-md p-4 space-y-3">
+            <div className="flex justify-between items-center">
+              <h2 className="text-sm">Portfolio Status</h2>
+              <div
+                className={`badge badge-sm badge-outline ${!update ? "badge-neutral" : update?.statusCode === 0 ? "badge-warning" : update?.statusCode === 200 ? "badge-success" : "badge-error"}`}
+              >
+                {!update ? "Loading" : update.status}
+              </div>
+            </div>
+            <div className="flex justify-between items-center">
+              <h2 className="text-sm flex-[0.5]">Portfolio URL</h2>
+              <a
+                target="_blank"
+                href={portfolio?.portfolioURL}
+                className="text-xs text-end flex-[0.5] w-min truncate link link-primary"
+              >
+                {portfolio?.portfolioURL}
+              </a>
             </div>
           </div>
-          <div className="flex justify-between items-center">
-            <h2 className="text-sm flex-[0.5]">Portfolio URL</h2>
-            <a
-              target="_blank"
-              href={portfolio?.portfolioURL}
-              className="text-xs text-end flex-[0.5] w-min truncate link link-primary"
-            >
-              {portfolio?.portfolioURL}
-            </a>
+          <div className="border border-[color:#DBDBDB] h-fit rounded-md p-4 space-y-3">
+            <div className="text-sm flex justify-between flex-wrap">
+              <h2>Unique Visits</h2>
+              <p>{portfolio?.uniqueViews}</p>
+            </div>
+            <div className="text-sm flex justify-between flex-wrap">
+              <h2>Total Visits</h2>
+              <p>{portfolio?.totalViews}</p>
+            </div>
           </div>
         </div>
 
