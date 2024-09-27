@@ -15,8 +15,6 @@ export const createUserDocument = functions.auth
         await bucket.upload(photoURL, {
           destination: `/profile/${uid}.png`,
         });
-
-        console.log("Image uploaded successfully!");
       } catch (error) {
         console.error("Error uploading image:", error);
       }
