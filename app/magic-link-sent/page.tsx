@@ -61,7 +61,8 @@ const page = () => {
                 <p className="text-sm">
                   A magic link has been sent to{" "}
                   <span className="font-medium underline">
-                    yeahimjt@gmail.com.
+                    {window.localStorage.getItem("emailForSignIn")}
+                    {". "}
                   </span>
                   Please check your spam folder as well.
                 </p>
