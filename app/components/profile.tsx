@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { usersProfile } from "../lib/user";
+import React from "react";
 import Image from "next/image";
 
 const Profile = ({
