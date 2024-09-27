@@ -14,6 +14,10 @@ export interface PortfolioType {
   likes: number;
   photoURL: string[];
   portfolioURL: string;
-  views: number;
+  uniqueViews: number;
+  totalViews: number;
   user_id: string;
+  user_displayName?: string;
+  user_photoURL?: string;
+  user_title?: string;
 }
