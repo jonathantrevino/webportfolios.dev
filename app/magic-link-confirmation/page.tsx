@@ -29,7 +29,6 @@ const page = () => {
       let email = window.localStorage.getItem("emailForSignIn");
       if (!email) {
         email = window.prompt("Please provide your email for confirmation");
-        console.log(email);
       }
       if (!email) return;
 
@@ -43,7 +42,6 @@ const page = () => {
           } else {
             setNewUser(false);
           }
-          console.log(result);
         })
         .catch((error) => {
           // Some error occurred, you can inspect the code: error.code
@@ -86,7 +84,6 @@ const page = () => {
     router.push("/profile");
   }
 
-  console.log(user);
   return (
     <>
       <Link

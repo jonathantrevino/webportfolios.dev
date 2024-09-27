@@ -185,7 +185,6 @@ export const uploadPortfolio = async (
   try {
     // insert (or update if already exists) request into updates db
 
-    console.log("in here");
     const updateDoc = doc(firestore, "updates", user_id);
 
     await setDoc(updateDoc, {
@@ -222,16 +221,12 @@ export const uploadPortfolio = async (
       let screenshots = data.screenshotData;
       let screenshotPhotoLocations = [];
 
-      console.log("screenshots: ", screenshots);
       for (const screenshot of screenshots) {
-        console.log("screenshot: ", screenshot);
-
         // Convert Uint8Array to a Blob
         const blob = new Blob([Uint8Array.from(screenshot.data)], {
           type: "image/png",
         });
 
-        console.log(blob);
         if (blob) {
           // Upload the Blob to Firestore Storage
           const storageRef = ref(

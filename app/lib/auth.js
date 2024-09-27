@@ -26,7 +26,6 @@ export const sendMagicLink = async (email) => {
       // Save the email locally so you don't need to ask the user for it again
       // if they open the link on the same device.
       window.localStorage.setItem("emailForSignIn", email);
-      console.log("did it");
       return true;
     })
     .catch((error) => {

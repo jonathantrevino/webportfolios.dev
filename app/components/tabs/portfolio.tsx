@@ -41,7 +41,6 @@ const Portfolio = ({ user_id }: Props) => {
       try {
         const response = await checkUserUpdate(user_id);
         if (response && response.statusCode !== 0) {
-          console.log("Going to stop!", response);
           setUpdate({
             status: response.status,
             statusCode: response.statusCode,
@@ -52,14 +51,12 @@ const Portfolio = ({ user_id }: Props) => {
           }
           clearInterval(intervalId);
         } else if (response) {
-          console.log("Still going...", response);
           setUpdate({
             status: response.status,
             statusCode: response.statusCode,
             statusMessage: response.statusMessage,
           });
         } else if (!response && !portfolio) {
-          console.log("no response or portfolio");
           setUpdate({
             status: "",
             statusCode: -1,
@@ -75,7 +72,6 @@ const Portfolio = ({ user_id }: Props) => {
 
     return () => clearInterval(intervalId);
   }
-  console.log();
   async function handleUploadPortfolio() {
     const firebase_id = await user!.getIdToken();
     startUpdateLoop();
