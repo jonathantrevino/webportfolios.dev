@@ -1,11 +1,17 @@
 "use client";
 import Nav from "@/app/components/nav";
 import Profile from "@/app/components/profile";
-import { usersPortfolio, viewPortfolio } from "@/app/lib/user";
+import { auth } from "@/app/lib/firebase";
+import { updateVisits, usersPortfolio, viewPortfolio } from "@/app/lib/user";
 import { PortfolioType } from "@/types";
 import { Eye, Heart, LinkIcon, Pause, Play } from "lucide-react";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+
+interface VisitRecord {
+  [key: string]: boolean;
+}
 
 const page = ({ params }: { params: { user: string } }) => {
   const [portfolio, setPortfolio] = useState<PortfolioType | null>(null);
@@ -14,12 +20,32 @@ const page = ({ params }: { params: { user: string } }) => {
     displayName: string;
     title: string;
   } | null>(null);
+  const [user, loading] = useAuthState(auth);
   const [isCheckingPortfolio, setIsCheckingPortfolio] = useState<boolean>(true);
   const [clicked, setClicked] = useState<boolean>(false);
   const [imageSrc, setImageSrc] = useState<string>("");
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState<number>(1);
 
   const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    if (user?.uid === portfolio?.user_id) {
+      return;
+    }
+    const visits: VisitRecord = JSON.parse(
+      sessionStorage.getItem("uniqueVisits") || "{}",
+    );
+
+    // update uniqueVisits counter / session storage
+    if (!visits[params.user]) {
+      visits[params.user] = true;
+      sessionStorage.setItem("uniqueVisits", JSON.stringify(visits));
+      updateVisits(params.user, "unique");
+    } else {
+      // update views counter / session storage
+      updateVisits(params.user, "views");
+    }
+  }, []);
 
   // Handle rotating highlighted image
   useEffect(() => {
@@ -70,17 +96,18 @@ const page = ({ params }: { params: { user: string } }) => {
       photoURL: response.photoURL,
       portfolioURL: response.portfolioURL,
       user_id: response.user_id,
-      views: response.views,
+      totalViews: 0,
+      uniqueViews: 0,
     });
   }
 
   return (
     <>
       <Nav />
-      <main className="flex break:flex-row max-w-[1440px] w-3/4 mx-auto flex-col h-full lg:h-[calc(100vh-97px)] gap-10 lg:gap-0">
-        <section className="pt-24 w-full">
+      <main className="flex break:flex-row max-w-[1440px] w-3/4 mx-auto flex-col   gap-10 lg:gap-0">
+        <section className="py-24 w-full h-full">
           {!isCheckingPortfolio && portfolio && (
-            <div className="space-y-[23px]">
+            <div className="space-y-[23px] h-full">
               <div className="flex justify-between items-center">
                 {postUser && <Profile postUser={postUser} />}
                 <div className="flex justify-end gap-2">
@@ -135,14 +162,14 @@ const page = ({ params }: { params: { user: string } }) => {
                   </div>
                 </div>
 
-                <div
-                  className="tooltip absolute top-4 left-4"
-                  data-tip="Portfolio Status"
-                >
-                  <div className="badge badge-success badge-outline !rounded-md">
-                    Active
-                  </div>
-                </div>
+                {/* <div */}
+                {/*   className="tooltip absolute top-4 left-4" */}
+                {/*   data-tip="Portfolio Status" */}
+                {/* > */}
+                {/*   <div className="badge badge-success badge-outline !rounded-md"> */}
+                {/*     Active */}
+                {/*   </div> */}
+                {/* </div> */}
               </div>
 
               <div className="grid grid-cols-2 gap-5 lg:grid-cols-4">
