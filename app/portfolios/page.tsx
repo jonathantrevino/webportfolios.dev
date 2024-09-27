@@ -41,7 +41,7 @@ const page = () => {
                       <a
                         role="button"
                         href={`/portfolios/${portfolio.user_id}`}
-                        className="btn btn-sm border border-base-300 shadow-sm"
+                        className="btn btn-sm "
                       >
                         <Eye />
                       </a>
