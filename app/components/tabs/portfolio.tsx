@@ -80,6 +80,9 @@ const Portfolio = ({ user_id }: Props) => {
       user_id,
       firebase_id,
     );
+    if (response) {
+      handleUsersPortfolio();
+    }
   }
 
   async function handleUsersPortfolio() {
