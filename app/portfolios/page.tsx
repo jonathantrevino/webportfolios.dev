@@ -6,6 +6,7 @@ import { paginatePortfolios } from "../lib/user";
 import Image from "next/image";
 import { Eye, LinkIcon } from "lucide-react";
 import Profile from "../components/profile";
+import Link from "next/link";
 
 const page = () => {
   const [portfolios, setPortfolios] = useState<PortfolioType[] | null>(null);
@@ -25,8 +26,11 @@ const page = () => {
           {portfolios &&
             portfolios.map((portfolio: PortfolioType) => (
               <div className="space-y-3">
-                <div className="relative">
-                  <div className="w-full h-fit aspect-video border border-[color:#DBDBDB] relative rounded-md">
+                <Link
+                  href={`/portfolios/${portfolio.user_id}`}
+                  className="relative"
+                >
+                  <div className="w-full h-fit hover:scale-[1.01] hover:shadow-lg transition-all aspect-video border border-[color:#DBDBDB] relative rounded-md">
                     <Image
                       className="rounded-md"
                       src={portfolio?.photoURL[0]}
@@ -37,27 +41,27 @@ const page = () => {
                   </div>
 
                   <div className="absolute bottom-4 right-4 flex gap-2">
-                    <div className="tooltip" data-tip="View Post">
-                      <a
-                        role="button"
-                        href={`/portfolios/${portfolio.user_id}`}
-                        className="btn btn-sm "
-                      >
-                        <Eye />
-                      </a>
-                    </div>
+                    {/* <div className="tooltip" data-tip="View Post"> */}
+                    {/*   <a */}
+                    {/*     role="button" */}
+                    {/*     href={`/portfolios/${portfolio.user_id}`} */}
+                    {/*     className="btn btn-sm " */}
+                    {/*   > */}
+                    {/*     <Eye /> */}
+                    {/*   </a> */}
+                    {/* </div> */}
                     <div className="tooltip" data-tip="View Portfolio">
                       <a
-                        role="button"
-                        target="_blank"
                         href={portfolio?.portfolioURL}
+                        target="_blank"
                         className="btn btn-sm"
+                        onClick={(e: any) => e.stopPropagation()}
                       >
                         <LinkIcon />
                       </a>
                     </div>
                   </div>
-                </div>
+                </Link>
                 <div className="flex items-center gap-4">
                   <Image
                     src={portfolio.user_photoURL!}
