@@ -68,7 +68,7 @@ const Portfolio = ({ user_id }: Props) => {
       } catch (error) {
         console.log("Error checking user updates");
       }
-    }, 5000);
+    }, 10000);
 
     return () => clearInterval(intervalId);
   }
