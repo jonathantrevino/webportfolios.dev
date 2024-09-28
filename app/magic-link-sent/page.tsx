@@ -18,7 +18,7 @@ const page = () => {
   }, []);
   return (
     <>
-      <Link href="/" className="flex gap-[10px]">
+      <Link href="/" className="flex gap-[10px] p-[25px]">
         <div className="font-medium text-lg">
           webportfolios
           <span className="font-semibold text-primary">.dev</span>
