@@ -4,10 +4,17 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { sendMagicLink } from "../lib/auth";
 
 const page = () => {
   const message = [" lets", "get", "started"];
   const [emailForSignIn, setEmailForSignIn] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+  function handleMagicLink() {
+    setLoading(true);
+    sendMagicLink(emailForSignIn);
+    setLoading(false);
+  }
 
   useEffect(() => {
     // Only run this on the client-side
@@ -76,7 +83,12 @@ const page = () => {
                 </p>
               </div>
             </div>
-            <button className="btn btn-primary btn-sm !w-full">
+            <button
+              className="btn btn-primary btn-sm !w-full"
+              onClick={() => {
+                handleMagicLink();
+              }}
+            >
               Resend Magic Link
             </button>
           </motion.div>
