@@ -18,12 +18,11 @@ const page = () => {
   }, []);
   return (
     <>
-      <Link
-        href="/"
-        className="m-[25px] flex gap-[10px] border-b border-transparent w-fit"
-      >
-        <Image src="/logo.png" width={30} height={30} alt="linkfolio logo" />
-        <div className="font-medium text-lg">Linkfolio</div>
+      <Link href="/" className="flex gap-[10px]">
+        <div className="font-medium text-lg">
+          webportfolios
+          <span className="font-semibold text-primary">.dev</span>
+        </div>
       </Link>
       <main className="pt-24 mx-auto max-w-[460px]">
         <div className="relative w-full">
