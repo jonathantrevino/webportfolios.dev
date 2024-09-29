@@ -20,6 +20,7 @@ const page = () => {
     // Only run this on the client-side
     if (typeof window !== "undefined") {
       const email = window.localStorage.getItem("emailForSignIn");
+      localStorage.getItem("emailForSignIn");
       setEmailForSignIn(email);
     }
   }, []);
@@ -76,7 +77,7 @@ const page = () => {
                 <p className="text-sm">
                   A magic link has been sent to{" "}
                   <span className="font-medium underline">
-                    {emailForSignIn && emailForSignIn}
+                    {localStorage.getItem("emailForSignIn")}
                     {". "}
                   </span>
                   Please check your spam folder as well.
