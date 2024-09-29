@@ -8,7 +8,7 @@ import { sendMagicLink } from "../lib/auth";
 
 const page = () => {
   const message = [" lets", "get", "started"];
-  const [emailForSignIn, setEmailForSignIn] = useState<string | null>(null);
+  const [emailForSignIn, setEmailForSignIn] = useState<string | null>("");
   const [loading, setLoading] = useState<boolean>(false);
   function handleMagicLink() {
     setLoading(true);
@@ -20,7 +20,6 @@ const page = () => {
     // Only run this on the client-side
     if (typeof window !== "undefined") {
       const email = window.localStorage.getItem("emailForSignIn");
-      localStorage.getItem("emailForSignIn");
       setEmailForSignIn(email);
     }
   }, []);
@@ -77,7 +76,7 @@ const page = () => {
                 <p className="text-sm">
                   A magic link has been sent to{" "}
                   <span className="font-medium underline">
-                    {localStorage.getItem("emailForSignIn")}
+                    {emailForSignIn}
                     {". "}
                   </span>
                   Please check your spam folder as well.
