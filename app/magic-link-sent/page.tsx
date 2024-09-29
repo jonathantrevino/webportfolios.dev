@@ -91,13 +91,13 @@ const page = () => {
               </div>
               <div>
                 <p className="text-sm">
-                  A magic link has been sent to{" "}
-                  <span className="font-medium underline">
-                    {isClient
-                      ? window.localStorage.getItem("emailForSignIn")
-                      : ""}
-                    {". "}
-                  </span>
+                  A magic link has been sent to your email{" "}
+                  {/* <span className="font-medium underline"> */}
+                  {/*   {isClient */}
+                  {/*     ? window.localStorage.getItem("emailForSignIn") */}
+                  {/*     : ""} */}
+                  {/*   {". "} */}
+                  {/* </span> */}
                   Please check your spam folder as well.
                 </p>
               </div>
