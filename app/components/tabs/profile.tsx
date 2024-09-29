@@ -75,21 +75,23 @@ const Profile = () => {
     <div className="space-y-[23px]">
       <div className="flex justify-between items-end">
         <div className="flex gap-3 items-center">
-          <div>
+          <div className="relative w-[100px] h-[100px] overflow-hidden bg-[color:#FEFEFE] flex justify-center items-center rounded-full border border-base-300">
             {(user?.photoURL || tempProfilePic) && (
-              <Image
-                src={
-                  tempProfilePic
-                    ? tempProfilePic
-                    : user?.photoURL
-                      ? user?.photoURL
-                      : ""
-                }
-                width={100}
-                height={100}
-                className="bg-[color:#FEFEFE] rounded-full border border-base-300"
-                alt="user"
-              />
+              <div>
+                <Image
+                  src={
+                    tempProfilePic
+                      ? tempProfilePic
+                      : user?.photoURL
+                        ? user?.photoURL
+                        : ""
+                  }
+                  width={100}
+                  height={100}
+                  className="bg-[color:#FEFEFE] rounded-full border border-base-300"
+                  alt="user"
+                />
+              </div>
             )}
             {!user?.photoURL && !tempProfilePic && !loading && (
               <div className="w-[100px] h-[100px] bg-[color:#FEFEFE] flex justify-center items-center rounded-full border border-base-300">

@@ -36,13 +36,13 @@ const Nav = () => {
             className="hover:scale-105 hover:drop-shadow-md transition-all"
             role="button"
           >
-            <div className="w-[40px] h-[40px] bg-[color:#FEFEFE] flex justify-center items-center rounded-full border border-base-300">
+            <div className="relative w-[40px] h-[40px] overflow-hidden bg-[color:#FEFEFE] flex justify-center items-center rounded-full border border-base-300">
               {user?.photoURL && (
                 <Image
                   src={user?.photoURL}
                   width={100}
                   height={100}
-                  className="bg-[color:#FEFEFE] rounded-full border border-base-300"
+                  className="bg-[color:#FEFEFE] absolute object-cover rounded-full border border-base-300"
                   alt="user"
                 />
               )}
