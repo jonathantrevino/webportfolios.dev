@@ -39,7 +39,7 @@ const Nav = () => {
             <div className="relative w-[40px] h-[40px] overflow-hidden bg-[color:#FEFEFE] flex justify-center items-center rounded-full border border-base-300">
               {user?.photoURL && (
                 <Image
-                  src={user?.photoURL}
+                  src={user?.photoURL || "/default.png"}
                   width={100}
                   height={100}
                   className="bg-[color:#FEFEFE] absolute object-cover rounded-full border border-base-300"

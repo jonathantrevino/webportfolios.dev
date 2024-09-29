@@ -10,8 +10,8 @@ const Profile = ({
     <div className="flex relative items-center gap-4">
       <div className="relative w-[40px] h-[40px] overflow-hidden bg-[color:#FEFEFE] flex justify-center items-center rounded-full border border-base-300">
         <Image
-          src={postUser.user_photoURL}
-          className="absolute object-cover rounded-full rounded-full"
+          src={postUser.user_photoURL || "/default.png"}
+          className="absolute object-cover rounded-full"
           width={64}
           height={64}
           alt="portfolio owner"

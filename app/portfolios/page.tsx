@@ -5,7 +5,6 @@ import { PortfolioType } from "@/types";
 import { paginatePortfolios } from "../lib/user";
 import Image from "next/image";
 import { Eye, LinkIcon } from "lucide-react";
-import Profile from "../components/profile";
 import Link from "next/link";
 
 const page = () => {
@@ -15,6 +14,7 @@ const page = () => {
   }, []);
   async function handlePortfolios() {
     const response = await paginatePortfolios(null);
+    console.log(response);
     if (!response) return;
     setPortfolios(response);
   }
@@ -22,10 +22,10 @@ const page = () => {
     <>
       <Nav />
       <main className="flex break:flex-row max-w-[1440px] w-3/4 mx-auto flex-col  gap-10 lg:gap-0">
-        <section className="pt-24 w-full grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
+        <section className="pt-24 w-full grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5">
           {portfolios &&
             portfolios.map((portfolio: PortfolioType) => (
-              <div className="space-y-3">
+              <div key={portfolio.user_id} className="space-y-3">
                 <Link
                   href={`/portfolios/${portfolio.user_id}`}
                   className="relative"
@@ -64,7 +64,7 @@ const page = () => {
                 </Link>
                 <div className="flex items-center gap-4">
                   <Image
-                    src={portfolio.user_photoURL!}
+                    src={portfolio.user_photoURL! || "/default.png"}
                     className="rounded-full"
                     width={32}
                     height={32}
