@@ -25,6 +25,21 @@ const page = () => {
       setEmailForSignIn(email);
     }
   }, []);
+  // Add an event listener to listen for storage changes
+  useEffect(() => {
+    const handleStorageChange = () => {
+      const updatedEmail = window.localStorage.getItem("emailForSignIn");
+      setEmailForSignIn(updatedEmail || "No email found");
+    };
+
+    // Listen for localStorage changes (e.g., if email is set from another tab or asynchronously)
+    window.addEventListener("storage", handleStorageChange);
+
+    // Cleanup listener on component unmount
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, []);
   return (
     <>
       <Link href="/" className="flex gap-[10px] p-[25px]">
