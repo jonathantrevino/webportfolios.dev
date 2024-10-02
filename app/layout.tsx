@@ -7,11 +7,11 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Developer Portfolios Made Simple | webportfolios.dev",
+  title: "Developer Portfolios Made Simple - webportfolios.dev",
   description:
-    "Easily showcase your developer portfolio and get discovered. Upload your portfolio with a single URL, view analytics, and get inspired by others.",
+    "Real-world developer portfolios. Upload your portfolio with a single URL, view analytics, and get inspired by others.",
   keywords:
-    "developer portfolios, software engineer portfolios, web developer portfolios, showcase portfolios, portfolio analytics",
+    "developer portfolios, software engineer portfolios, web developer portfolios, showcase portfolios",
 };
 
 export default function RootLayout({
@@ -39,6 +39,7 @@ export default function RootLayout({
           sizes="16x16"
           href="/favicon-16x16.png"
         />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="manifest" href="/site.webmanifest" />
       </head>
       <body className={inter.className}>
