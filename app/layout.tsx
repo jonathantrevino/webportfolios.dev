@@ -7,7 +7,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Developer Portfolios Made Simple - webportfolios.dev",
+  title: "Developer Portfolios Made Simple",
   description:
     "Real-world developer portfolios. Upload your portfolio with a single URL, view analytics, and get inspired by others.",
   keywords:
