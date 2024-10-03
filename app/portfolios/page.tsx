@@ -14,7 +14,6 @@ const page = () => {
   }, []);
   async function handlePortfolios() {
     const response = await paginatePortfolios(null);
-    console.log(response);
     if (!response) return;
     setPortfolios(response);
   }
