@@ -26,20 +26,20 @@ const page = () => {
           <h1 className="font-semibold text-[29px] text-center ">
             Get Started
           </h1>
-          <p className="text-sm mx-auto text-center w-[480px]">
+          <p className="text-sm mx-auto text-center max-w-[480px]">
             Just enter your email, and we'll send you a magic link to get
             started, whether you're signing in or creating a new account.
           </p>
         </div>
-        <div className="mx-auto w-fit">
+        <div className="mx-auto w-fit px-8 space-y-5 md:space-y-0">
           <input
             type="email"
-            className="input input-bordered input-sm mx-auto w-[360px] rounded-r-none"
+            className="input input-bordered input-sm  justify-center w-full  md:w-[360px] md:rounded-r-none"
             placeholder="example@domain.com"
             onChange={(e) => setEmail(e.target.value)}
           />
           <button
-            className="btn btn-primary btn-sm !rounded-l-none"
+            className="btn btn-primary btn-sm mx-auto md:!rounded-l-none w-full md:w-fit"
             disabled={!email && loading ? true : false}
             onClick={handleMagicLink}
           >
