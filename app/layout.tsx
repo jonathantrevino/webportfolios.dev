@@ -7,7 +7,10 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Developer Portfolios Made Simple",
+  title: {
+    default: "Developer Portfolios Made Simple - webportfolios.dev",
+    template: "%s - webportfolios.dev",
+  },
   description:
     "Real-world developer portfolios. Upload your portfolio with a single URL, view analytics, and get inspired by others.",
   keywords:
@@ -41,8 +44,9 @@ export default function RootLayout({
         />
         <link rel="manifest" href="/site.webmanifest" />
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+        <meta property="og:image" content="/opengraph-image.png" />
         <meta name="msapplication-TileColor" content="#da532c" />
-        <meta name="theme-color" content="#ffffff" />{" "}
+        <meta name="theme-color" content="#ffffff" />
       </head>
       <body className={inter.className}>
         {children}
