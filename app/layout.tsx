@@ -8,13 +8,13 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
-    default: "Developer Portfolios Made Simple - webportfolios.dev",
+    default: "Developer Portfolios - Showcase & Explore Real Developer Portfolios",
     template: "%s - webportfolios.dev",
   },
   description:
-    "Real-world developer portfolios. Upload your portfolio with a single URL, view analytics, and get inspired by others.",
+    "Easily upload your portfolio with a single URL and see how it performs with handy analytics. Discover inspiration from fellow developers and showcase your unique work. Let's share and grow together!",
   keywords:
-    "developer portfolios, software engineer portfolios, web developer portfolios, showcase portfolios",
+    "developer portfolios, software engineer portfolios, web developer portfolios, showcase portfolios, portfolios",
 };
 
 export default function RootLayout({
