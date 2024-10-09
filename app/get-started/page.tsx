@@ -23,7 +23,10 @@ const page = () => {
           <div className="mx-auto w-[45px] h-[45px] flex items-center bg-primary-content text-primary rounded-full justify-center">
             <ScanFace />
           </div>
-          <h1 className="font-semibold text-[29px] text-center ">
+          <h1
+            className="font-semibold text-[29px] text-center "
+            aria-hidden="true"
+          >
             Get Started
           </h1>
           <p className="text-sm mx-auto text-center max-w-[480px]">
