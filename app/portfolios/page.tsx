@@ -62,14 +62,16 @@ const page = () => {
                   </div>
                 </Link>
                 <div className="flex items-center gap-4">
+                  <div className='relative w-[32px] h-[32px] overflow-hidden rounded-full'>
                   <Image
                     src={portfolio.user_photoURL! || "/default.png"}
-                    className="rounded-full"
+                    className="absolute w-full object-cover object-center"
                     width={32}
                     height={32}
                     draggable={false}
                     alt="portfolio owner"
                   />
+                  </div>
                   <div className="">
                     <h1 className="text-sm font-semibold">
                       {portfolio.user_displayName!}
