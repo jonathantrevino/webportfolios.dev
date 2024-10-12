@@ -25,7 +25,7 @@ const Portfolio = ({ user_id }: Props) => {
     statusCode: number;
     statusMessage: string;
   } | null>(null);
-  const validURL = new RegExp('^(https?://)?([a-zA-Z0-9.-]+).([a-zA-Z]{2,})(/[^\s]*)?$')
+  const validURL = new RegExp('^https:\/\/([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(\/[^\s]*)?$')
 
 useEffect(() => {
     // Check if portfolioTemp exists and is a valid URL
