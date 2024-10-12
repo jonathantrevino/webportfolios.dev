@@ -18,12 +18,23 @@ const Portfolio = ({ user_id }: Props) => {
   const [portfolioTemp, setPortfolioTemp] = useState<string | null>(null);
   const [portfolio, setPortfolio] = useState<PortfolioType | null>(null);
   const [isCheckingPortfolio, setIsCheckingPortfolio] = useState<boolean>(true);
+  const [isDisabled, setIsDisabled] = useState(true);
+
   const [update, setUpdate] = useState<{
     status: string;
     statusCode: number;
     statusMessage: string;
   } | null>(null);
   const validURL = new RegExp('^(https?://)?([a-zA-Z0-9.-]+).([a-zA-Z]{2,})(/[^\s]*)?$')
+
+useEffect(() => {
+    // Check if portfolioTemp exists and is a valid URL
+    if (portfolioTemp) {
+      setIsDisabled(!validURL.test(portfolioTemp));
+    } else {
+      setIsDisabled(true);
+    }
+  }, [portfolioTemp]); // Re-run the effect when portfolioTemp changes
 
   useEffect(() => {
     const checkPortfolio = async () => {
@@ -118,6 +129,7 @@ const Portfolio = ({ user_id }: Props) => {
         <div className="flex justify-end">
           <button
             className="btn btn-primary btn-sm"
+            disabled={isDisabled}
             onClick={() => handleUploadPortfolio()}
           >
             Upload Portfolio
