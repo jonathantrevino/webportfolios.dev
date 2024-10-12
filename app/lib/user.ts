@@ -262,7 +262,9 @@ export const uploadPortfolio = async (
       return { status: true, statusText: "Upload Successful" };
     } else {
     }
-  } catch (error) {}
+  } catch (error) {
+    console.log(error)
+  }
 };
 
 export const paginatePortfolios = async (lastVisible: any) => {
