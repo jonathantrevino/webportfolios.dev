@@ -23,6 +23,7 @@ const Portfolio = ({ user_id }: Props) => {
     statusCode: number;
     statusMessage: string;
   } | null>(null);
+  const validURL = new RegExp('^(https?://)?([a-zA-Z0-9.-]+).([a-zA-Z]{2,})(/[^\s]*)?$')
 
   useEffect(() => {
     const checkPortfolio = async () => {
@@ -117,13 +118,7 @@ const Portfolio = ({ user_id }: Props) => {
         <div className="flex justify-end">
           <button
             className="btn btn-primary btn-sm"
-            disabled={
-              portfolioTemp
-                ? portfolioTemp.includes(".")
-                  ? false
-                  : true
-                : true
-            }
+            disabled={validURL.test(portfolioTemp)}
             onClick={() => handleUploadPortfolio()}
           >
             Upload Portfolio
