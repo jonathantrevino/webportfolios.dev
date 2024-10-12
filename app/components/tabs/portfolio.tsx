@@ -118,7 +118,6 @@ const Portfolio = ({ user_id }: Props) => {
         <div className="flex justify-end">
           <button
             className="btn btn-primary btn-sm"
-            disabled={!portfolioTemp || !validURL.test(portfolioTemp)}
             onClick={() => handleUploadPortfolio()}
           >
             Upload Portfolio
