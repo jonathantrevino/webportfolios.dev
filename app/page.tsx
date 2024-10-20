@@ -10,7 +10,7 @@ import Link from "next/link";
 
 
 export default async function Home() {
-  const portfoliosList = await getRecentPortfolios(null);
+  const portfoliosList: PortfolioType[] | [] = await getRecentPortfolios(null);
   return (
     <>
       <Nav />
