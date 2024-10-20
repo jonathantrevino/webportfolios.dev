@@ -9,6 +9,7 @@ import {
   startAfter,
 } from "firebase/firestore";
 import { firestore, storage } from "./firebase";
+import { UserType } from "@/types";
 
 export async function getRecentPortfolios(lastVisible: any) {
   const portfolioRef = collection(firestore, 'portfolios');
@@ -32,16 +33,16 @@ export async function getRecentPortfolios(lastVisible: any) {
         const userDocRef = doc(firestore, 'users', userId); // Assume users collection
         const userDocSnapshot = await getDoc(userDocRef);
 
-        let userData = {};
+        let userData: UserType | null = null;
         if (userDocSnapshot.exists()) {
-          userData = userDocSnapshot.data();
+          userData = userDocSnapshot.data() as UserType;
         }
 
         return {
           ...portfolioData,
-          user_displayName: userData.displayName,
-          user_photoURL: userData.photoURL,
-          user_title: userData.title,
+          user_displayName: userData!.displayName,
+          user_photoURL: userData!.photoURL,
+          user_title: userData!.title,
         };
       })
     );
