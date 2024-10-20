@@ -1,6 +1,4 @@
 import { MetadataRoute } from "next";
-import { paginatePortfolios } from "./lib/user";
-import { PortfolioType } from "@/types";
 import { getAllPortfolios } from "./lib/portfolio";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
