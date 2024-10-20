@@ -27,7 +27,7 @@ const Portfolio = ({ user_id }: Props) => {
   } | null>(null);
   const validURL = new RegExp('^https:\/\/([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(\/[^\s]*)?$')
 
-useEffect(() => {
+  useEffect(() => {
     // Check if portfolioTemp exists and is a valid URL
     if (portfolioTemp) {
       setIsDisabled(!validURL.test(portfolioTemp));
@@ -107,6 +107,7 @@ useEffect(() => {
       user_id: response.user_id,
       totalViews: response.totalViews,
       uniqueViews: response.uniqueViews,
+      uploaded: response.uploaded,
     });
   }
 

@@ -160,6 +160,7 @@ export const usersPortfolio = async (user_id: string) => {
     user_id: portfolio.user_id,
     totalViews: portfolio.totalViews,
     uniqueViews: portfolio.uniqueViews,
+    uploaded: portfolio.uploaded,
   };
 };
 
