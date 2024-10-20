@@ -9,24 +9,24 @@ import { useAuthState } from "react-firebase-hooks/auth";
 const Nav = () => {
   const [user, loading] = useAuthState(auth);
   return (
-    <nav className="p-[25px] flex justify-between items-center bg-[color:#FAFAFA] border boder-[color:#DBDBDB]">
+    <nav className="p-[35px] flex justify-between items-center text-base-content/90">
       <div className="flex gap-[30px] items-center h-[40px]">
         <Link href="/" className="flex gap-[10px]">
-          <div className="font-medium text-lg">
-            webportfolios
+          <div className="font-medium text-lg flex gap-0">
             <span className="font-semibold text-primary">.dev</span>
           </div>
         </Link>
-        <ul className="hidden gap-[20px] text-[color:#363636] sm:flex">
-          <li className="hover:text-[color:#000000]">
+        <ul className="hidden gap-[20px] font-light  sm:flex">
+          <li className="hover:text-base-content">
             <Link href="/portfolios">Portfolios</Link>
           </li>
-          {/* <li className="hover:text-[color:#000000]"> */}
-          {/*   <Link href="/components">Components</Link> */}
-          {/* </li> */}
-          {/* <li className="hover:text-[color:#000000]"> */}
-          {/*   <Link href="/newsletter">Newsletter</Link> */}
-          {/* </li> */}
+          <li className="hover:text-base-content">
+            <Link href="/portfolio-components">Components</Link>
+          </li>
+          <li className="hover:text-base-content">
+            <Link href="/guides">Guides</Link>
+          </li>
+
         </ul>
       </div>
       <div className="flex gap-[20px] items-center">
@@ -53,7 +53,7 @@ const Nav = () => {
         {!user && !loading && (
           <Link
             href="/get-started"
-            className="btn btn-primary btn-sm m-1"
+            className="btn btn-outline btn-primary btn-sm m-1"
             role="button"
           >
             Get Started
@@ -67,15 +67,15 @@ const Nav = () => {
             tabIndex={0}
             className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow !text-[color:#363636]"
           >
-            <li className="hover:text-[color:#000000]">
+            <li className="hover:text-base-content">
               <Link href="/portfolios">Portfolios</Link>
             </li>
-            {/* <li className="hover:text-[color:#000000]"> */}
-            {/*   <Link href="/components">Components</Link> */}
-            {/* </li> */}
-            {/* <li className="hover:text-[color:#000000]"> */}
-            {/*   <Link href="/newsletter">Newsletter</Link> */}
-            {/* </li> */}
+            <li className="hover:text-base-content">
+              <Link href="/portfolio-components">Components</Link>
+            </li>
+            <li className="hover:text-base-content">
+              <Link href="/guides">Guides</Link>
+            </li>
           </ul>
         </div>
       </div>
