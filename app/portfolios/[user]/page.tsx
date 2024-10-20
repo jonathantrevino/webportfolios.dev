@@ -3,6 +3,7 @@ import { PortfolioType } from "@/types";
 import { Metadata } from "next";
 import PortfolioView from "@/app/components/portfolioView";
 import { viewPortfolio } from "@/app/lib/user";
+import Footer from "@/app/components/footer";
 
 export async function generateMetadata({
   params,
@@ -27,26 +28,26 @@ const page = async ({ params }: { params: { user: string } }) => {
   const response = await viewPortfolio(params.user);
   const portfolio: PortfolioType | null = response
     ? {
-        likes: response.likes,
-        photoURL: response.photoURL,
-        portfolioURL: response.portfolioURL,
-        user_id: response.user_id,
-        totalViews: 0,
-        uniqueViews: 0,
-      }
+      likes: response.likes,
+      photoURL: response.photoURL,
+      portfolioURL: response.portfolioURL,
+      user_id: response.user_id,
+      totalViews: 0,
+      uniqueViews: 0,
+    }
     : null;
 
   const postUser = response
     ? {
-        user_photoURL: response.user_photoURL,
-        displayName: response.displayName,
-        title: response.title,
-      }
+      user_photoURL: response.user_photoURL,
+      displayName: response.displayName,
+      title: response.title,
+    }
     : null;
   return (
     <>
       <Nav />
-      <main className="flex break:flex-row max-w-[1440px] w-3/4 mx-auto flex-col   gap-10 lg:gap-0">
+      <main className="px-[25px] mb-[50px] space-y-5">
         <section className="py-24 w-full h-full">
           {portfolio && postUser ? (
             <PortfolioView portfolio={portfolio} postUser={postUser} />
@@ -54,6 +55,7 @@ const page = async ({ params }: { params: { user: string } }) => {
             ""
           )}
         </section>
+        <Footer />
       </main>
     </>
   );
