@@ -106,7 +106,6 @@ const PortfolioView = ({
               fill
               alt={`${portfolio.user_displayName}'s portfolio`}
             />
-
             <div
               className="radial-progress absolute bottom-2 right-2 z-[5] cursor-pointer"
               style={
