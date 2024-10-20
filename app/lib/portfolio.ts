@@ -55,7 +55,7 @@ export async function getAllPortfolios() {
 
   try {
     // Create a reference to the collection
-    const collectionRef = collection(firestore, "yourCollectionName");
+    const collectionRef = collection(firestore, "portfolios");
 
     // Fetch all documents in the collection
     const querySnapshot = await getDocs(collectionRef);
