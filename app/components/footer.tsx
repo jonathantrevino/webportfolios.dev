@@ -22,7 +22,7 @@ const Footer = () => {
         <h5 className='text-sm font-light'>Navigation</h5>
         <div className='space-y-2 flex flex-col text-sm'>
           <Link href='/portfolios' className='hover:text-base-content w-fit'>Portfolios</Link>
-          <Link href='/components' className='hover:text-base-content w-fit'>Components</Link>
+          <Link href='/portfolio-components' className='hover:text-base-content w-fit'>Components</Link>
           <Link href='/guides' className='hover:text-base-content w-fit'>Guides</Link>
         </div>
       </div>
