@@ -9,9 +9,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }))
     : [];
   return [
-    {
-      url: `https://www.webportfolios.dev/profile`,
-    },
+
     {
       url: `https://www.webportfolios.dev/portfolios`,
     },
