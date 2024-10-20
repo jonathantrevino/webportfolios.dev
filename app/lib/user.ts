@@ -5,6 +5,7 @@ import {
   getDocs,
   increment,
   limit,
+  orderBy,
   query,
   setDoc,
   startAfter,
@@ -286,16 +287,14 @@ export const uploadPortfolio = async (
 export const paginatePortfolios = async (category: string | null, lastVisible: any) => {
   let userQ;
   let portfolioQ;
-  if (lastVisible) {
-
-  }
   // Create the user query based on the category (user title)
   userQ = query(
     collection(firestore, "users"),
+    orderBy('uid'),
+    limit(6),
     where('setup', '==', true),
     ...(category ? [where("title", "==", category)] : []), // Conditionally add title filter
     ...(lastVisible ? [startAfter(lastVisible)] : []), // Add pagination if lastVisible exists
-    limit(6)
   );
 
 
@@ -341,5 +340,5 @@ export const paginatePortfolios = async (category: string | null, lastVisible: a
 
 
 
-  return { portfolios, lastDocument };
+  return { portfolios, lastDocument: lastDocument.id };
 };
