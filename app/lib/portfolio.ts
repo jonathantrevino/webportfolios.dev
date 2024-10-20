@@ -50,3 +50,25 @@ export async function getRecentPortfolios(lastVisible: any) {
   }
   return []
 }
+
+export async function getAllPortfolios() {
+
+  try {
+    // Create a reference to the collection
+    const collectionRef = collection(firestore, "yourCollectionName");
+
+    // Fetch all documents in the collection
+    const querySnapshot = await getDocs(collectionRef);
+
+    // Map through the documents and extract the data
+    const documents = querySnapshot.docs.map((doc) => ({
+      id: doc.id, // Get the document ID
+      ...doc.data(), // Get the document data
+    }));
+
+    return documents; // Return the array of documents
+  } catch (error) {
+    console.error("Error fetching documents:", error);
+    throw error; // Rethrow the error for handling upstream if necessary
+  }
+}

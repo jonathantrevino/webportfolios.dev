@@ -1,12 +1,13 @@
 import { MetadataRoute } from "next";
 import { paginatePortfolios } from "./lib/user";
 import { PortfolioType } from "@/types";
+import { getAllPortfolios } from "./lib/portfolio";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const response = await paginatePortfolios(null);
+  const response = await getAllPortfolios();
   const portfolios: MetadataRoute.Sitemap = response
-    ? response.map((portfolio: PortfolioType) => ({
-      url: `https://www.webportfolios.dev/portfolios/${portfolio.user_id}`,
+    ? response.map((portfolio) => ({
+      url: `https://www.webportfolios.dev/portfolios/${portfolio.id}`,
     }))
     : [];
   return [
@@ -26,7 +27,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     {
       url: `https://www.webportfolios.dev/get-started`,
     },
-
     ...portfolios,
   ];
 }
