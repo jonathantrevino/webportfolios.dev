@@ -11,7 +11,6 @@ import Link from "next/link";
 
 export default async function Home() {
   const portfoliosList = await getRecentPortfolios(null);
-  console.log(portfoliosList)
   return (
     <>
       <Nav />
