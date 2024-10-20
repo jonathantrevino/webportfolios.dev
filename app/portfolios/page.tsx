@@ -5,9 +5,7 @@ import { PortfolioType } from "@/types";
 import PortfolioPreview from '@/app/components/portfolioPreview';
 
 import { paginatePortfolios } from "../lib/user";
-import Image from "next/image";
 import { Eye, LinkIcon, Loader } from "lucide-react";
-import Link from "next/link";
 import Footer from "../components/footer";
 import PortfolioLoad from "../components/portfolioLoad";
 
