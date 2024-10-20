@@ -49,7 +49,7 @@ export default function RootLayout({
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff" />
       </head>
-      <body className={inter.className}>
+      <body className={inter.className + ' max-w-[1440px] mx-auto'}>
         {children}
         <SpeedInsights />
         <Analytics />
