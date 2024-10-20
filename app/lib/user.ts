@@ -5,7 +5,6 @@ import {
   getDocs,
   increment,
   limit,
-  orderBy,
   query,
   setDoc,
   startAfter,
@@ -19,7 +18,6 @@ import {
   uploadBytes,
   uploadBytesResumable,
 } from "firebase/storage";
-import { Timestamp } from "@google-cloud/firestore";
 
 export const getUserInfo = async (uid: string) => {
   const userRef = doc(firestore, "users", uid);
@@ -250,8 +248,12 @@ export const uploadPortfolio = async (
       let likes = 0;
 
       const date = new Date();
+      const formattedDate = new Intl.DateTimeFormat('en-us', {
+        dateStyle: 'full',
+        timeStyle: 'long',
+        timeZone: 'America/Chicago',
+      }).format(date)
 
-      const firestoreTimestamp = Timestamp.fromDate(date);
 
       await setDoc(
         portfolioDocRef,
@@ -262,7 +264,7 @@ export const uploadPortfolio = async (
           uniqueViews: views,
           totalViews: views,
           likes: likes,
-          uploaded: firestoreTimestamp,
+          uploaded: formattedDate,
         },
         { merge: true },
       );

@@ -1,3 +1,5 @@
+import { Timestamp } from "@firebase/firestore";
+
 export interface UserType {
   uid: string;
   title: string | null;
@@ -20,4 +22,5 @@ export interface PortfolioType {
   user_displayName?: string;
   user_photoURL?: string;
   user_title?: string;
+  uploaded: Timestamp;
 }
