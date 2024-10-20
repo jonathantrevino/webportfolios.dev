@@ -19,6 +19,7 @@ import {
   uploadBytes,
   uploadBytesResumable,
 } from "firebase/storage";
+import { Timestamp } from "@google-cloud/firestore";
 
 export const getUserInfo = async (uid: string) => {
   const userRef = doc(firestore, "users", uid);
@@ -243,9 +244,14 @@ export const uploadPortfolio = async (
         }
       }
       const portfolioDocRef = doc(firestore, "portfolios", user_id);
+      const userDocRef = doc(firestore, "users", user_id);
 
       let views = 0;
       let likes = 0;
+
+      const date = new Date();
+
+      const firestoreTimestamp = Timestamp.fromDate(date);
 
       await setDoc(
         portfolioDocRef,
@@ -256,9 +262,15 @@ export const uploadPortfolio = async (
           uniqueViews: views,
           totalViews: views,
           likes: likes,
+          uploaded: firestoreTimestamp,
         },
         { merge: true },
       );
+
+      await setDoc(userDocRef, {
+        setup: true,
+      }, { merge: true })
+
       return { status: true, statusText: "Upload Successful" };
     } else {
     }
@@ -267,26 +279,42 @@ export const uploadPortfolio = async (
   }
 };
 
-export const paginatePortfolios = async (lastVisible: any) => {
-  let q;
-  if (!lastVisible) {
-    q = query(
-      collection(firestore, "portfolios"),
-      orderBy("uniqueViews"),
-      limit(25),
-    );
-  } else {
-    q = query(
-      collection(firestore, "portfolios"),
-      orderBy("uniqueViews"),
-      startAfter(lastVisible),
-      limit(25),
-    );
+export const paginatePortfolios = async (category: string | null, lastVisible: any) => {
+  let userQ;
+  let portfolioQ;
+  if (lastVisible) {
+
+    console.log(lastVisible.id)
+  }
+  // Create the user query based on the category (user title)
+  userQ = query(
+    collection(firestore, "users"),
+    where('setup', '==', true),
+    ...(category ? [where("title", "==", category)] : []), // Conditionally add title filter
+    ...(lastVisible ? [startAfter(lastVisible)] : []), // Add pagination if lastVisible exists
+    limit(6)
+  );
+
+
+  const userSnapshot = await getDocs(userQ);
+  console.log(userSnapshot)
+
+  const userIds = userSnapshot.docs.map(doc => doc.id)
+
+
+  console.log(userIds)
+  if (userIds.length === 0) {
+    return null;
   }
 
-  const portfolioSnapshot = await getDocs(q);
+  const lastDocument = userSnapshot.docs[userSnapshot.docs.length - 1];
+
+  portfolioQ = query(collection(firestore, 'portfolios'), where('user_id', 'in', userIds || ''))
+
+  const portfolioSnapshot = await getDocs(portfolioQ);
 
   if (portfolioSnapshot.empty) return null;
+
 
   let portfolios: any[] = [];
 
@@ -310,5 +338,7 @@ export const paginatePortfolios = async (lastVisible: any) => {
     }
   }
 
-  return portfolios;
+
+
+  return { portfolios, lastDocument };
 };
