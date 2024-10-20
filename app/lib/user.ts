@@ -286,7 +286,6 @@ export const paginatePortfolios = async (category: string | null, lastVisible: a
   let portfolioQ;
   if (lastVisible) {
 
-    console.log(lastVisible.id)
   }
   // Create the user query based on the category (user title)
   userQ = query(
@@ -299,12 +298,10 @@ export const paginatePortfolios = async (category: string | null, lastVisible: a
 
 
   const userSnapshot = await getDocs(userQ);
-  console.log(userSnapshot)
 
   const userIds = userSnapshot.docs.map(doc => doc.id)
 
 
-  console.log(userIds)
   if (userIds.length === 0) {
     return null;
   }
