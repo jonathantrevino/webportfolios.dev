@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/magic-link-sent", "/magic-link-confirmation"],
+        disallow: ["/magic-link-sent", "/magic-link-confirmation", '/privacy-policy', '/terms-of-service', '/portfolio-components'],
       },
     ],
     sitemap: `https://www.webportfolios.dev/sitemap.xml`,

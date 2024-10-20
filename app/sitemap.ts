@@ -6,8 +6,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const response = await paginatePortfolios(null);
   const portfolios: MetadataRoute.Sitemap = response
     ? response.map((portfolio: PortfolioType) => ({
-        url: `https://www.webportfolios.dev/portfolios/${portfolio.user_id}`,
-      }))
+      url: `https://www.webportfolios.dev/portfolios/${portfolio.user_id}`,
+    }))
     : [];
   return [
     {
@@ -16,6 +16,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     {
       url: `https://www.webportfolios.dev/portfolios`,
     },
+    {
+      url: `https://www.webportfolios.dev/guides`,
+    },
+    {
+      url: `https://www.webportfolios.dev/guides/launch-website-in-under-5-minutes`,
+    },
+
     {
       url: `https://www.webportfolios.dev/get-started`,
     },
