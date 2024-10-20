@@ -9,7 +9,56 @@ const config: Config = {
   theme: {
     extend: {
       screens: { break: "1255px" },
-      animation: {},
+      animation: {
+        'gradient-animation': 'gradient 60s ease infinite',
+        'gradient-opposite-animation': 'gradient-opposite 60s ease infinite'
+      },
+      backgroundImage: {
+        //'pattern': "url('/header.png)"
+      },
+      keyframes: {
+        gradient: {
+          '0%': {
+            'background-position': '0% 0%',
+          },
+          '25%': {
+            'background-position': '150% 0%',
+            'background-size': '200% 200%',
+          },
+          '50%': {
+            'background-position': '75% 100%',
+            'background-size': '75% 100%',
+          },
+          '75%': {
+            'background-position': '0% 100%',
+            'background-size': '200% 200%',
+          },
+          '100%': {
+            'background-position': '0% 0%',
+          },
+        },
+        'gradient-opposite': {
+          '0%': {
+            'background-position': '0% 0%',
+          },
+          '25%': {
+            'background-position': '0% 100%',
+            'background-size': '200% 200%',
+          },
+          '50%': {
+            'background-position': '25% 0%',
+            'background-size': '75% 100%',
+          },
+          '75%': {
+            'background-position': '150% 0%',
+            'background-size': '200% 200%',
+          },
+          '100%': {
+            'background-position': '0% 0%',
+          },
+        },
+
+      }
     },
   },
   plugins: [require("daisyui")],
