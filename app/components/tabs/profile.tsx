@@ -166,9 +166,10 @@ const Profile = () => {
           >
             <option disabled></option>
             <option>Software Engineer</option>
-            <option>Web Developer</option>
             <option>Front End Developer</option>
             <option>Back End Developer</option>
+            <option>Full Stack Developer</option>
+            <option>Web Developer</option>
           </select>{" "}
         </div>
         <div className="flex justify-end">
