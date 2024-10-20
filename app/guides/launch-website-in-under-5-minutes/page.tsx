@@ -91,7 +91,7 @@ const page = () => {
                   <li>Make sure Visual Studio Code is open.</li>
                   <li>Click on <strong>Open Folder</strong>, then create or select a folder where you want to store your website files. This will be your project folder (e.g., my website)</li>
                   <div className='relative w-full aspect-video'><Image src='/open_folder.webp' fill alt='Opening Folder For Visual Studio Code Workspace' /></div>
-                  <li className='pt-5'>Once the folder is open, you can create a new file by clicking <strong>File > New File</strong> or using the keyboard shortcut CTRL+N (Windows) or Cmd+N (Mac).</li>
+                  <li className='pt-5'>Once the folder is open, you can create a new file by clicking <strong>File &gt; New File</strong> or using the keyboard shortcut CTRL+N (Windows) or Cmd+N (Mac).</li>
                   <li>Name this file index.html-this will be the main file for your website</li>
                 </ul>
               </div>
@@ -114,7 +114,7 @@ const page = () => {
               <div className='space-y-2'>
                 <h3 className='font-medium'>Create New Repository Inside Visual Studio Code:</h3>
                 <ul className='list-decimal pl-8 space-y-1'>
-                  <li>Click on <strong>Terminal > New Terminal</strong>, then copy and paste the the code found in <strong>...or create a new repository on the command line</strong></li>
+                  <li>Click on <strong>Terminal &gt; New Terminal</strong>, then copy and paste the the code found in <strong>...or create a new repository on the command line</strong></li>
                   <div className='relative w-full aspect-video'><Image src='/open_new_terminal.webp' fill alt='Opening New Terminal From macOS Terminal Dropdown' /></div>
                   <li className='pt-5'>Once that is complete, you will be able to use <strong>Source Control</strong> in Visual Studio Code where you will see your repository changes</li>
                   <li>It is important that you have all changes seen in Source Control within the Staged Changes section</li>
