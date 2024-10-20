@@ -2,6 +2,15 @@ import React from 'react'
 import Nav from '../components/nav'
 import Footer from '../components/footer'
 import Link from 'next/link'
+import { Metadata } from 'next';
+
+export const generateMetadata = (): Metadata => {
+  return {
+    title: 'Components',
+    description: 'Discover a curated collection of ready-to-use components designed for quick integration into your portfolio. Copy and paste these versatile JSX elements to streamline your launch process and elevate your web presence effortlessly.',
+  };
+};
+
 
 const page = () => {
   return (
