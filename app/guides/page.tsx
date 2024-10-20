@@ -2,6 +2,12 @@ import React from 'react'
 import Nav from '../components/nav'
 import Footer from '../components/footer'
 import GuidePreview from '../components/guidePreview'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Guides',
+  description: "Discover in-depth guides designed to help you build, enhance, and showcase your developer portfolio. Whether you're just starting or refining your portfolio, our step-by-step tutorials and expert tips will guide you through the process. Learn how to create impressive portfolios, integrate powerful components, and get inspired by real-world examples from software engineers and front-end developers.",
+}
 
 const page = () => {
   return (

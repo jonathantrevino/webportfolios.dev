@@ -9,6 +9,10 @@ import { Eye, LinkIcon, Loader } from "lucide-react";
 import Footer from "../components/footer";
 import PortfolioLoad from "../components/portfolioLoad";
 
+
+
+
+
 const page = () => {
   const [loading, setLoading] = useState<boolean>(true)
   const [portfolios, setPortfolios] = useState<PortfolioType[] | null>(null);

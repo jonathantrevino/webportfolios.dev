@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   description:
     "Easily upload your portfolio with a single URL and see how it performs with handy analytics. Discover inspiration from fellow developers and showcase your unique work. Let's share and grow together!",
   keywords:
-    "developer portfolios, software engineer portfolios, web developer portfolios, showcase portfolios, portfolios",
+    "developer portfolios, software engineer portfolios examples, web developer portfolios examples, portfolios, portfolio resources",
 };
 
 export default function RootLayout({
