@@ -34,6 +34,7 @@ const page = async ({ params }: { params: { user: string } }) => {
       user_id: response.user_id,
       totalViews: 0,
       uniqueViews: 0,
+      uploaded: response.uploaded,
     }
     : null;
 

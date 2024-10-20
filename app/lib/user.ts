@@ -132,6 +132,7 @@ export const viewPortfolio = async (portfolio_id: string) => {
     photoURL: portfolio.photoURL,
     portfolioURL: portfolio.portfolioURL,
     user_id: portfolio.user_id,
+    uploaded: portfolio.uploaded,
     displayName: user.displayName,
     user_photoURL: user.photoURL,
     title: user.title,
