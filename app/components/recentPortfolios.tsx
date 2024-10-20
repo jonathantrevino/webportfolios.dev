@@ -1,12 +1,9 @@
 'use client'
-import { getRecentPortfolios } from '../lib/portfolio';
 import { PortfolioType } from '@/types';
 import Link from 'next/link';
 import PortfoioPreview from './portfolioPreview';
-import PortfolioLoad from './portfolioLoad';
 
 const RecentPortfolios = ({ portfoliosList }: { portfoliosList: PortfolioType[] }) => {
-  console.log(portfoliosList)
   return (
     <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
       {portfoliosList && portfoliosList?.map((portfolio, index) => (
