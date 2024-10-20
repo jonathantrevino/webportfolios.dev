@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {}
+
+.works {
+    grid-template-columns: 1fr 0fr;
+}
