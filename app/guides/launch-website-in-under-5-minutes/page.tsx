@@ -154,7 +154,7 @@ const page = () => {
                 <Link href='#upload-to-github' className='link'>5. Upload Your Website to Github and Enable GitHub Pages</Link>
               </div>
               <hr />
-              <Link href='/launch-a-webite-in-under-5-minutes' className='md:flex gap-5 hidden'>
+              <Link href='/launch-website-in-under-5-minutes' className='md:flex gap-5 hidden'>
                 <ChevronUp />
                 Back To Top
               </Link>
