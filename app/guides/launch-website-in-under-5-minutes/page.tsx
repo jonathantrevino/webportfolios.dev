@@ -6,7 +6,7 @@ import React from 'react'
 import Image from 'next/image'
 
 export const metadata = {
-  title: 'How to Launch and Host a Website for Free in Under 5 minutes',
+  title: 'Launch and Host a Website for Free in Under 5 minutes',
   description: 'Learn how to launch and host a website for free in under 5 minutes using GitHub Pages. Perfect for beginners and anyone looking for free web hosting.',
   openGraph: {
     title: 'How to Launch and Host a Website for Free in Under 5 minutes',
@@ -32,7 +32,7 @@ const page = () => {
           <div className='aspect-video object-cover relative overflow-hidden mb-5'>
             <Image className='object-cover border' src='/thumbnail.webp' fill alt="Thumbnail" />
           </div>
-          <h1 className='text-4xl text-center'>How to Launch and Host a Website for Free in Under 5 minutes</h1>
+          <h1 className='text-4xl text-center'>Launch and Host a Website for Free in Under 5 minutes</h1>
           <p className='text-center text-sm'>Updated October 17th, 2024</p>
 
         </span>
@@ -154,7 +154,7 @@ const page = () => {
                 <Link href='#upload-to-github' className='link'>5. Upload Your Website to Github and Enable GitHub Pages</Link>
               </div>
               <hr />
-              <Link href='/privacy-policy' className='md:flex gap-5 hidden'>
+              <Link href='/launch-a-webite-in-under-5-minutes' className='md:flex gap-5 hidden'>
                 <ChevronUp />
                 Back To Top
               </Link>
