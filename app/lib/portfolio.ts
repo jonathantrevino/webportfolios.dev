@@ -11,16 +11,13 @@ import {
 import { firestore, storage } from "./firebase";
 import { PortfolioType, UserType } from "@/types";
 
-export async function getRecentPortfolios(lastVisible: any) {
+export async function getRecentPortfolios() {
   const portfolioRef = collection(firestore, 'portfolios');
   let portfolioQuery = query(
     portfolioRef,
     orderBy('uploaded', 'desc'),
     limit(5),
   )
-  if (lastVisible) {
-    portfolioQuery = query(portfolioRef, orderBy('uploaded', 'desc'), startAfter(lastVisible), limit(3))
-  }
 
   const querySnapshot = await getDocs(portfolioQuery)
   if (!querySnapshot.empty) {
