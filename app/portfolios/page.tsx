@@ -38,7 +38,6 @@ const page = async () => {
     <>
       <Nav />
       <main className="px-[25px] space-y-5 mb-[50px]">
-
         <PortfolioSection initialPortfolios={portfolios} lastDocument={lastDocument} hasMoreInitially={hasMore} />
         <Footer />
       </main>
