@@ -6,7 +6,7 @@ import { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Guides',
-  description: "Discover in-depth guides designed to help you build, enhance, and showcase your developer portfolio. Whether you're just starting or refining your portfolio, our step-by-step tutorials and expert tips will guide you through the process. Learn how to create impressive portfolios, integrate powerful components, and get inspired by real-world examples from software engineers and front-end developers.",
+  description: "Find expert guides to build, enhance, and showcase your developer portfolio. Get step-by-step tutorials, tips, and real-world inspiration from software engineers and front-end developers.",
 }
 
 const page = () => {
