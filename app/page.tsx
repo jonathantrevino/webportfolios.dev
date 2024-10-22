@@ -84,4 +84,4 @@ export default async function Home() {
   );
 }
 
-export const revalidate = 900; 
+export const revalidate = 300; // Reducing caching times to 5 minutes 
