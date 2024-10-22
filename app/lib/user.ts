@@ -218,64 +218,6 @@ export const uploadPortfolio = async (
 
     // check if screenshots were successful
     else if (response.status === 200) {
-      const data = await response.json();
-
-      let screenshots = data.screenshotData;
-      let screenshotPhotoLocations = [];
-
-      for (const screenshot of screenshots) {
-        // Convert Uint8Array to a Blob
-        const blob = new Blob([Uint8Array.from(screenshot.data)], {
-          type: "image/png",
-        });
-
-        if (blob) {
-          // Upload the Blob to Firestore Storage
-          const storageRef = ref(
-            storage,
-            "/users/" + user_id + "/" + Date.now() + ".png",
-          );
-
-          // Store URL of uploaded file
-          screenshotPhotoLocations.push(
-            await uploadBytesResumable(storageRef, blob).then(() => {
-              return getDownloadURL(storageRef);
-            }),
-          );
-        }
-      }
-      const portfolioDocRef = doc(firestore, "portfolios", user_id);
-      const userDocRef = doc(firestore, "users", user_id);
-
-      let views = 0;
-      let likes = 0;
-
-      const date = new Date();
-      const formattedDate = new Intl.DateTimeFormat('en-us', {
-        dateStyle: 'full',
-        timeStyle: 'long',
-        timeZone: 'America/Chicago',
-      }).format(date)
-
-
-      await setDoc(
-        portfolioDocRef,
-        {
-          user_id: user_id,
-          portfolioURL: url,
-          photoURL: screenshotPhotoLocations,
-          uniqueViews: views,
-          totalViews: views,
-          likes: likes,
-          uploaded: formattedDate,
-        },
-        { merge: true },
-      );
-
-      await setDoc(userDocRef, {
-        setup: true,
-      }, { merge: true })
-
       return { status: true, statusText: "Upload Successful" };
     } else {
     }
