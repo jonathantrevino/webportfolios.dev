@@ -5,8 +5,10 @@ import GuidePreview from '../components/guidePreview'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Guides',
+  title: 'Portfolio Guides',
   description: "Find expert guides to build, enhance, and showcase your developer portfolio. Get step-by-step tutorials, tips, and real-world inspiration from software engineers and front-end developers.",
+  keywords:
+    "Portfolio building guides, Developer portfolio tips, How to create a portfolio,Front-end developer portfolio,Step-by-step portfolio tutorials,Best practices for developer portfolios,Showcasing your developer skills"
 }
 
 const page = () => {
