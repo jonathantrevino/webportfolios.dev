@@ -36,9 +36,9 @@ const PortfoioPreview = ({ portfolio }: { portfolio: PortfolioType }) => {
             />
           </div>
           <div className="">
-            <h1 className="text-sm font-semibold">
+            <p className="text-sm font-semibold">
               {portfolio.user_displayName!}
-            </h1>
+            </p>
             <p className="text-xs">{portfolio.user_title!}</p>
           </div>
         </div>
