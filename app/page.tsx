@@ -7,7 +7,6 @@ import { Book, Lightbulb, Puzzle, Users } from "lucide-react";
 import JoinCta from "./components/joinCta";
 import Footer from "./components/footer";
 import Link from "next/link";
-import FeaturePreview from "./components/featurePreview";
 import PortfolioLoad from "./components/portfolioLoad";
 import NewsletterCta from "./components/newsletterCta";
 
