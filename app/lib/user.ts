@@ -272,8 +272,8 @@ export const paginatePortfolios = async (category: string | null, lastVisible: a
       portfolios.push({
         ...portfolio.data(), // Use portfolio.data() to get the actual data
         user_photoURL: userSnapshot.data()?.photoURL,
-        user_displayName: userSnapshot.data()?.displayName,
-        user_title: userSnapshot.data()?.title,
+        user_displayName: userSnapshot.data()?.displayName || 'Anonymous',
+        user_title: userSnapshot.data()?.title || 'No Title Set',
       });
     } else {
       console.log(`No user found for portfolio: ${portfolio.id}`);
