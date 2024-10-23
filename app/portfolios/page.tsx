@@ -32,7 +32,7 @@ const page = async () => {
   // Fetch initial portfolios server-side
   const response = await paginatePortfolios(null, null);
   const { portfolios, lastDocument } = serializePortfoliosResponse(response);
-  const hasMore = response ? response.portfolios.length >= 5 : false;
+  const hasMore = response ? response.portfolios.length === 6 : false;
   console.log(lastDocument)
   return (
     <>
