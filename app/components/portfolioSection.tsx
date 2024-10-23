@@ -87,7 +87,7 @@ const PortfolioSection = ({ initialPortfolios, lastDocument, hasMoreInitially }:
             <PortfolioPreview portfolio={portfolio} key={index} />
           )) :
           !portfolios && !loading &&
-          <div className='flex justify-center col-span-1 lg:col-span-2 xl:col-span-3'><p>No portfolios found for <span className='font-medium'>{portfolioCategory}</span></p></div>
+          <div className='flex justify-center col-span-1 lg:col-span-2 xl:col-span-3'><p>No portfolios found for {portfolioCategory}</p></div>
         }
 
         {loading ? Array.from({ length: 6 }).map((_, index) => (
