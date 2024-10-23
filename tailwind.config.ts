@@ -9,12 +9,14 @@ const config: Config = {
   theme: {
     extend: {
       screens: { break: "1255px" },
+      colors: {
+        'custom-gray': '#F7F7F7',
+      },
       animation: {
         'gradient-animation': 'gradient 60s ease infinite',
         'gradient-opposite-animation': 'gradient-opposite 60s ease infinite'
       },
       backgroundImage: {
-        //'pattern': "url('/header.png)"
       },
       keyframes: {
         gradient: {
