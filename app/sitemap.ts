@@ -17,11 +17,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `https://www.webportfolios.dev/guides`,
     },
     {
-      url: `https://www.webportfolios.dev/guides/launch-website-in-under-5-minutes`,
+      url: `https://www.webportfolios.dev/roadmap`,
     },
-
     {
-      url: `https://www.webportfolios.dev/get-started`,
+      url: `https://www.webportfolios.dev/guides/launch-website-in-under-5-minutes`,
     },
     ...portfolios,
   ];
