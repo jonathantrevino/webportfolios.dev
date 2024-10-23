@@ -63,11 +63,13 @@ const PortfolioSection = ({ initialPortfolios, lastDocument, hasMoreInitially }:
   }
   return (
     <>
+      <span className='text-center bg-red-50'>
+        <h1 className='font-medium text-4xl'>Diverse Portfolios For Your Inspiration</h1>
+        <p>Browse real developer portfolios.</p>
+      </span>
       <div className='flex justify-between items-end gap-5'>
-        <div className='space-y-3'>
-          <p className='font-medium'>
-            Filters
-          </p>
+
+        <div className='space-y-3' aria-label='Portfolio Search Filters'>
           <select className="select select-bordered w-fit " value={portfolioCategory ? portfolioCategory : 'Category'} onChange={(e: any) => { setPortfolioCategory(e.target.value) }}>
             <option disabled>Category</option>
             <option>Software Engineer</option>
@@ -79,12 +81,13 @@ const PortfolioSection = ({ initialPortfolios, lastDocument, hasMoreInitially }:
         </div>
         <button className={`link text-sm ${!portfolioCategory ? 'hidden' : ''}`} onClick={() => { setPortfolioCategory(null); setHasMore(true); }}>Clear Filters</button>
       </div>
-      <section className="w-full grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 pb-[30px]">
+      <section className="w-full grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 pb-[30px] min-h-[624px]">
         {portfolios ?
           portfolios.map((portfolio: PortfolioType, index: number) => (
             <PortfolioPreview portfolio={portfolio} key={index} />
           )) :
-          ''
+          !portfolios && !loading &&
+          <div className='flex justify-center col-span-1 lg:col-span-2 xl:col-span-3'><p>No portfolios found for <span className='font-medium'>{portfolioCategory}</span></p></div>
         }
 
         {loading ? Array.from({ length: 6 }).map((_, index) => (
