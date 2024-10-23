@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer className='my-[50px] grid grid-cols-3 md:grid-cols-5 gap-5'>
       <div className='col-span-3 md:col-span-2 space-y-5'>
-        <Link href="/" className="flex gap-[10px]">
+        <Link href="/" className="flex gap-[10px] w-fit">
           <div className="font-medium text-2xl">
             <span className="font-semibold text-primary">.dev</span>
           </div>
@@ -42,6 +42,7 @@ const Footer = () => {
           <Link href='/terms-of-service' className='hover:text-base-content w-fit'>Terms of Service</Link>
         </div>
       </div>
+      <div className='col-span-3 md:col-span-5 font-light text-base-content/90 text-end'>&copy; 2024 webportfolios.dev</div>
     </footer>
   )
 }
