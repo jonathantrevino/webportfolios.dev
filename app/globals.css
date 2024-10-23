@@ -7,3 +7,30 @@ body {}
 .works {
     grid-template-columns: 1fr 0fr;
 }
+
+#status {
+    scale: .7;
+    opacity: 0;
+    transform: translateY(60px);
+    animation: fadeInUp 6s ease-in-out 2s infinite;
+}
+
+@keyframes fadeInUp {
+    0% {
+        transform: translateY(60px) scale(0.7);
+        opacity: 0;
+    }
+
+    20%,
+    80% {
+        transform: translateY(0) scale(1.5);
+        /* Scales up to 1.1 */
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(80) scale(0.7);
+        /* Returns to scale 1 */
+        opacity: 0;
+    }
+}
