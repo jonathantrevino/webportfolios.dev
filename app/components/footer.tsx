@@ -24,6 +24,7 @@ const Footer = () => {
           <Link href='/portfolios' className='hover:text-base-content w-fit'>Portfolios</Link>
           <Link href='/portfolio-components' className='hover:text-base-content w-fit'>Components</Link>
           <Link href='/guides' className='hover:text-base-content w-fit'>Guides</Link>
+          <Link href='/roadmap' className='hover:text-base-content w-fit'>Roadmap</Link>
         </div>
       </div>
       {/**
