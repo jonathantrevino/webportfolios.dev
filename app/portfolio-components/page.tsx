@@ -23,7 +23,6 @@ const page = () => {
             Page Is Currently Under Construction
           </h1>
           <p>In the meantime, feel free to explore our <Link href='/' className='link'>homepage</Link> or check out our <Link href='/portfolios' className='link'>latest portfolios</Link>.</p>
-          <p className='text-sm font-light'>Expected completion date is October 21st 2024</p>
         </div>
         <Footer />
       </main>
