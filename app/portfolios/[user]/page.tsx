@@ -13,7 +13,8 @@ export async function generateMetadata({
   const response = await viewPortfolio(params.user);
   return {
     title: `${response?.displayName}'s Portfolio`,
-    description: `Check out ${response?.displayName}'s portfolio`,
+    description: `Explore Abdullah Ayoola's impressive portfolio featuring innovative projects and professional achievements. ${response?.title ? 'Discover unique insights and inspiration from a skilled ' + response?.title : ''}`,
+    keywords: `developer portfolio, ${response?.title ? response?.title + ' portfolio example, ' : ''} coding portfolio, portfolio inspiration`,
     openGraph: {
       images: [
         {

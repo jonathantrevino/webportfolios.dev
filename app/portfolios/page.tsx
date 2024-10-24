@@ -7,7 +7,8 @@ import PortfolioSection from "../components/portfolioSection";
 export const generateMetadata = (): Metadata => {
   return {
     title: 'Portfolios',
-    description: 'Explore portfolio examples from Software Engineers, Web Developers, and more. Find inspiration and showcase your own projects on webportfolios.dev.',
+    description: 'Browse a comprehensive list of filterable developer portfolio examples from software engineers, web developers, and designers. Find inspiration and explore real-world projects.',
+    keywords: 'developer portfolio examples, software engineer portfolios, web developer portfolios, tech portfolios'
   };
 };
 
