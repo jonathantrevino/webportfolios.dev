@@ -99,13 +99,13 @@ const PortfolioSection = ({ initialPortfolios, lastDocument, hasMoreInitially }:
         {portfolios && hasMore ?
           <div className='flex justify-center col-span-1 lg:col-span-2 xl:col-span-3'>
             {!loading ?
-              <button className='btn btn-primary w-full' onClick={handlePortfolios}>Load More</button>
+              <button className='btn btn-primary w-fit my-10' onClick={handlePortfolios}>Load More</button>
               :
               <div className='flex gap-3 text-base-content'><Loader className='animate-spin' /><p>Loading More</p></div>
             }
 
           </div>
-          : loading && <div className='h-[48px] w-full skeleton col-span-1 lg:col-span-2 xl:col-span-3'></div>
+          : loading && <div className='flex col-span-1 lg:col-span-2 xl:col-span-3 justify-center my-10'><div className='h-[48px] w-[104.8px] skeleton col-span-1 lg:col-span-2 xl:col-span-3'></div></div>
         }
       </section>
     </>
